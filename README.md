@@ -1,8 +1,8 @@
-# FresherNote
+# Kelp
 
 [Heroku link][heroku] **NB:** This should be a link to your production site
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://intense-beach-12058.herokuapp.com
 
 ## Minimum Viable Product
 

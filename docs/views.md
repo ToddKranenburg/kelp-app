@@ -6,21 +6,25 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Profile / UserReviewsIndex / SchoolReviewsIndex / ReviewsIndexItem
+![profile]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Profile / UserReviewsIndex / ReviewsIndexItem
+![other_profile]
 
-## NoteBookForm
-![notebook-form]
+## Review / CommentsIndex / CommentsIndexItem
+![review]
+
+## ReviewForm
+![review_form]
 
 ## Component Heirarchy
 ![component-heirarchy]
 
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[profile]: ./wireframes/profile.png
+[other_profile]: ./wireframes/other_profile.png
+[review]: ./wireframes/review.png
+[review_form]: ./wireframes/review_form.png
 [component-heirarchy]: ./wireframes/component_heirarchy.png
