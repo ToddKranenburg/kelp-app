@@ -23,7 +23,7 @@ lng         | float     | not null
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-body        | text      |
+body        | text      | not null
 commenter_id| integer   | not null, foreign key (references users), indexed
 review_id   | integer   | not null, foreign key (references reviews), indexed
 
