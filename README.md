@@ -14,7 +14,7 @@ the Ruby on Rails and React.js development frameworks and allows users to:
 
 - [ ] Create an account
 - [ ] Sign in and sign out
-- [ ] Write and edit reviews as well as read the reviews of others
+- [ ] Write, edit, and destroy reviews as well as read the reviews of others
 - [ ] Add other users to their "school"
 - [ ] View a map with pins for their reviews and the reviews of those in their school
 - [ ] Comment on and like another's reviews
@@ -29,67 +29,78 @@ the Ruby on Rails and React.js development frameworks and allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
+### Phase 1: User Authentication and Review Model (1 day)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+
+The first step will be to build user authentication component of the app, with
+sign in, sign up, and sign out actions. Any user of the site who is not signed
+in will be redirected to the sign in page and can navigate to the sign up page.
+I will also build the review model and controller, with API JSON views for
+create, index, and show.
+
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Complete Flux Architecture for Reviews (3 days)
 
-Phase 2 is focused on setting up Flux, the React Router, and the React view
-structure for the main application. After the basic Flux architecture has been
-set up, a Note store will be implemented and a set of actions corresponding to
-the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+By the end of phase 2, a user should be able to create, update, destroy, and
+view reviews (both individual reviews and indices of reviews). Only authors
+should have authority to update and destroy reviews, and users must be signed
+in to perform any CRUD action. To complete the flux architecture, I will create
+a UserReview store with the appropriate actions and data storage to show the
+reviews. Additionally, to put the reviews on the webpage, I will need to build
+the necessary React components: the 'App', 'Profile', 'UserReviewsIndex',
+'ReviewsIndexItem', and 'Review' components. For now, users will only be able
+to see an index of their own reviews on their profile page. At this point, I
+plan on styling enough for the views to start resembling my wireframes.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Comments and Likes (1.5 days)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+In phase 3 I plan on implementing the comment and like features. This will
+require making models and controllers for both. Likes will need create and
+destroy methods and comments will need create, update, destroy, and index
+methods. I will also need to create 'CommentsIndex', 'CommentsIndexItem', and
+'CommentForm' components. These components need an additional store for
+comments, which will hold comments indexed by their associated review's id.
+Some basic styling should also be applied to these new components.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Schools and Map (2 days)
 
-Using the react-quill library (based on Quill.js), allow for complex styling of
-notes.
+Phase 4 will begin with the creation of the school component of Kelp, allowing
+users to create a network of other users whose reviews they are following. I
+will create a school_membership model and controller, with create and destroy
+actions. To display the reviews of members of a school, I will need a
+'SchoolReviewsIndex' component as well as a 'SchoolReview' store. Once the
+schools feature is complete, I will create a 'Map' component and a 'Marker'
+store. In this phase I also plan on adding lat and lng columns to the reviews
+table and the reviews JSON views.
 
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: SearchBar (1 day)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+Phase 5 will focus on creating the search bar feature. This will include
+SearchBar, SearchesIndex, and SearchesIndexItem components. Additionally, I will
+need to include a Search store to keep track of search items.
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
+### Phase 6: Stylize with CSS and Bootstrap (1 day)
 
-Bootstrap will have been used to keep things organized up until now, but in
-Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+Using CSS and Bootstrap, I will put the finishing touches on the app. Before
+this point I will ask others to try out the app and let me know what does and
+does not make sense about its user interface and try to improve any confusing
+features.
+
 
 ### Bonus Features (TBD)
-- [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
+- [ ] Save and share maps of different cities.
+- [ ] Sign up / Sign in with Facebook.
+- [ ] Tagging reviews and searching by tags
 - [ ] Multiple sessions
 
 [phase-one]: ./docs/phases/phase1.md
