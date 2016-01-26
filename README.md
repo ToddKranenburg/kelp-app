@@ -49,16 +49,24 @@ should have authority to update and destroy reviews, and users must be signed
 in to perform any CRUD action. To complete the flux architecture, I will create
 a UserReview store with the appropriate actions and data storage to show the
 reviews. Additionally, to put the reviews on the webpage, I will need to build
-the necessary React components: the 'App', 'Profile', 'UserReviewsIndex',
+the necessary React components: the 'App', 'Profile', 'ReviewsIndex',
 'ReviewsIndexItem', and 'Review' components. For now, users will only be able
 to see an index of their own reviews on their profile page. At this point, I
 plan on styling enough for the views to start resembling my wireframes.
 
 [Details][phase-two]
 
-### Phase 3: Comments and Likes (1.5 days)
+### Phase 3: Businesses (1 day)
 
-In phase 3 I plan on implementing the comment and like features. This will
+Once reviews are fully functional, I will create the business component. Users
+can create businesses and reviews are associated with businesses. This will
+require the creation of 'Business' and 'BusinessForm' components.
+
+[Details][phase-three]
+
+### Phase 4: Comments and Likes (1.5 days)
+
+In phase 4 I plan on implementing the comment and like features. This will
 require making models and controllers for both. Likes will need create and
 destroy methods and comments will need create, update, destroy, and index
 methods. I will also need to create 'CommentsIndex', 'CommentsIndexItem', and
@@ -66,11 +74,11 @@ methods. I will also need to create 'CommentsIndex', 'CommentsIndexItem', and
 comments, which will hold comments indexed by their associated review's id.
 Some basic styling should also be applied to these new components.
 
-[Details][phase-three]
+[Details][phase-four]
 
-### Phase 4: Schools and Map (2 days)
+### Phase 5: Schools and Map (2 days)
 
-Phase 4 will begin with the creation of the school component of Kelp, allowing
+Phase 5 will begin with the creation of the school component of Kelp, allowing
 users to create a network of other users whose reviews they are following. I
 will create a school_membership model and controller, with create and destroy
 actions. To display the reviews of members of a school, I will need a
@@ -79,22 +87,15 @@ schools feature is complete, I will create a 'Map' component and a 'Marker'
 store. In this phase I also plan on adding lat and lng columns to the reviews
 table and the reviews JSON views.
 
-[Details][phase-four]
+[Details][phase-five]
 
-### Phase 5: SearchBar (1 day)
+### Phase 6: SearchBar (1 day)
 
-Phase 5 will focus on creating the search bar feature. This will include
+Phase 6 will focus on creating the search bar feature. This will include
 SearchBar, SearchesIndex, and SearchesIndexItem components. Additionally, I will
 need to include a Search store to keep track of search items.
 
-[Details][phase-five]
-
-### Phase 6: Stylize with CSS and Bootstrap (1 day)
-
-Using CSS and Bootstrap, I will put the finishing touches on the app. Before
-this point I will ask others to try out the app and let me know what does and
-does not make sense about its user interface and try to improve any confusing
-features.
+[Details][phase-six]
 
 
 ### Bonus Features (TBD)

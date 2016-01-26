@@ -8,14 +8,6 @@ username        | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
-## businesses
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-name            | string    | not null
-type            | string    | not null
-lat             | float     | not null
-lng             | float     | not null
 
 ## reviews
 column name | data type | details
@@ -27,6 +19,14 @@ rating      | integer   | not null
 author_id   | integer   | not null, foreign key (references users), indexed
 business_id | integer   | not null, foreign key (references businesses), indexed
 
+## businesses
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+name            | string    | not null
+type            | string    | not null
+lat             | float     | not null
+lng             | float     | not null
 
 ## comments
 column name | data type | details

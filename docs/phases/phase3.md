@@ -1,41 +1,33 @@
-# Phase 3: Comments and Likes (1.5 days)
+# Phase 3: Businesses (1 day)
 
 ## Rails
 ### Models
-* Like
-* Comment
+* Business
 
 ### Controllers
-* Api::CommentsController (create, destroy, index, update)
-* Api::LikesController (create, destroy)
+* Api::BusinessesController (create, destroy, update)
 
 ### Views
-* comments/index.json.jbuilder
+* businesses/create.json.jbuilder
+* businesses/update.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* CommentsIndex
-  - CommentIndexItem
-  - CommentForm
-* SearchIndex
+* Business
+* BusinessForm
 
 ### Stores
-* Comment
 
 ### Actions
-* ApiActions.receiveAllReviewComments -> triggered by ApiUtil
-* ApiActions.deleteComment
-* CommentActions.fetchAllReviewComments -> triggers ApiUtil
-* CommentActions.createComment
-* CommentActions.editComment
-* CommentActions.destroyComment
-* LikeActions.createLike
-* LikeActions.destroyLike
+* BusinessActions.fetchAllBusinessReviews -> triggers ApiUtil
+* BusinessActions.createBusiness
+* BusinessActions.editBusiness
+* BusinessActions.destroyBusiness
 
 ### ApiUtil
-* ApiUtil.fetchAllReviewComments
-* ApiUtil.createComment
-* ApiUtil.editComment
-* ApiUtil.destroyComment
+* ApiUtil.fetchAllBusinessReviews
+* ApiUtil.createBusiness
+* ApiUtil.editBusiness
+* ApiUtil.destroyBusiness
 
 ## Gems/Libraries

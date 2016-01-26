@@ -19,7 +19,7 @@
 * UserReview
 
 ### Actions
-* ApiActions.receiveAllUserReviews -> triggered by ApiUtil
+* ApiActions.receiveAllReviews -> triggered by ApiUtil
 * ApiActions.deleteReview
 * ReviewActions.fetchAllUserReviews -> triggers ApiUtil
 * ReviewActions.fetchSingleReview

@@ -1,33 +1,41 @@
-# Phase 4: Schools and Map (2 days)
+# Phase 4: Comments and Likes (1.5 days)
 
 ## Rails
 ### Models
-* school_membership
+* Like
+* Comment
 
 ### Controllers
-* School_Memberships_Controller
+* Api::CommentsController (create, destroy, index, update)
+* Api::LikesController (create, destroy)
 
 ### Views
-
+* comments/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* SchoolReviewsIndex
-* Map
+* CommentsIndex
+  - CommentIndexItem
+  - CommentForm
+* SearchIndex
 
 ### Stores
-* SchoolReview
-* Marker
+* Comment
 
 ### Actions
-* ApiActions.receiveAllSchoolReviews -> triggered by ApiUtil
-* ApiActions.receiveAllMarkers
-* ReviewActions.fetchAllSchoolReviews -> triggers ApiUtil
-* MarkerActions.fetchAllMarkers
+* ApiActions.receiveAllReviewComments -> triggered by ApiUtil
+* ApiActions.deleteComment
+* CommentActions.fetchAllReviewComments -> triggers ApiUtil
+* CommentActions.createComment
+* CommentActions.editComment
+* CommentActions.destroyComment
+* LikeActions.createLike
+* LikeActions.destroyLike
 
 ### ApiUtil
-* ApiUtil.fetchAllSchoolReviews
-* ApiUtil.fetchAllMarkers
+* ApiUtil.fetchAllReviewComments
+* ApiUtil.createComment
+* ApiUtil.editComment
+* ApiUtil.destroyComment
 
 ## Gems/Libraries
-* google.maps

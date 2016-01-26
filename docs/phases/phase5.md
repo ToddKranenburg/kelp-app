@@ -1,26 +1,28 @@
-# Phase 5: SearchBar (1 day)
+# Phase 5: Schools and Map (2 days)
 
 ## Rails
 ### Models
+* school_membership
 
 ### Controllers
+* School_Memberships_Controller
 
 ### Views
 
+
 ## Flux
 ### Views (React Components)
-* SearchBar
-  - SearchesIndex
-    - SearchesIndexItem
+* Map
 
 ### Stores
-* Search
+* SchoolReview
+* Marker
 
 ### Actions
-* ApiActions.receiveAllSearches -> triggered by ApiUtil
-* SearchActions.fetchAllSearches -> triggers ApiUtil
+* ReviewActions.fetchAllSchoolReviews -> triggers ApiUtil
 
 ### ApiUtil
-* ApiUtil.fetchAllSearches
+* ApiUtil.fetchAllSchoolReviews
 
 ## Gems/Libraries
+* google.maps
