@@ -1,4 +1,4 @@
-class Api::ReviewsController < ApplictionController
+class Api::ReviewsController < ApplicationController
   def index
     #this will depend on who is calling it!!
     @reviews = Review.all
