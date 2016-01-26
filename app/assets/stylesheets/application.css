@@ -14,7 +14,7 @@
  *= require_self
  */
 
- body, div, ul, li, article, h1 {
+ body, div, ul, li, article, h1, input, a {
    margin: 0px;
    border: 0px;
    padding: 0px;
@@ -66,18 +66,52 @@ button:hover {
   padding: 40px;
 }
 
+/*Header*/
+
 .header {
   background-color: #68829E;
   display: block;
  }
 
- .header-logo {
+ .header-nav {
+   width: 900px;
+   margin: auto;
+   position: relative;
+   height: 70px;
+ }
+
+.header-logo {
   display: block;
   color: #fff;
   text-align: center;
-  padding: 10px;
   font-size: 36px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
  }
+
+.header-buttons{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+ }
+
+
+.header-buttons > a {
+  background: white;
+  display: block;
+  padding: 2px 5px;
+  font-size: 12px;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: #68829E;
+  margin: 5px 0px;
+ }
+
+/*Sign in / Sign out*/
 
 .sign-up {
   display: block;
@@ -89,6 +123,7 @@ button:hover {
   display: block;
   float: left;
   width: 410px;
+  padding: 70px;
   box-sizing: border-box;
 }
 
@@ -106,9 +141,19 @@ button:hover {
   padding: 5px;
 }
 
-.sign-up-form > button {
+.sign-up-form > label > input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
+.sign-up-form > button {
   margin-top: 10px;
+}
+
+.user-link {
+  font-size: 12px;
+  padding: 20px;
+  text-align: center;
 }
 
 .sign-up-content {

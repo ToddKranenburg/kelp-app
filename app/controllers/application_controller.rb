@@ -12,12 +12,31 @@ class ApplicationController < ActionController::Base
    user.reset_session_token!
    session[:session_token] = user.session_token
    @current_user = user
- end
+  end
 
-  def logout!(user)
-    user.reset_session_token!
-    session[:session_token] = nil
-    @current_user = nil
+  def ensure_logged_in
+    unless logged_in?
+      flash[:errors] = ["Please sign in!"]
+      redirect_to new_session_url
+    end
+  end
+
+  def ensure_logged_out
+    if logged_in?
+      flash[:errors] = ["You are already logged in!"]
+      redirect_to root_url
+    end
+  end
+
+  def logout!
+    if logged_in?
+      current_user.reset_session_token!
+      session[:session_token] = nil
+      @current_user = nil
+    else
+      flash[:errors] = ["You are not signed in!"]
+      redirect_to new_session_url
+    end
   end
 
   def logged_in?

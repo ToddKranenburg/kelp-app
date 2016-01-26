@@ -1,7 +1,7 @@
 <div class="main">
   <div class="sign-up group">
-    <form class="sign-up-form" action="<%= users_url %>" method="post">
-      <h1>Sign up</h1>
+    <form class="sign-up-form" action="<%= session_url %>" method="post">
+      <h1>Sign in</h1>
       <label>Username
         <input
         type="text"
@@ -18,9 +18,9 @@
 
       <br>
 
-      <button>Sign Up For Kelp</button>
+      <button>Sign In To Kelp</button>
       <div class="user-link">
-        <%= link_to "Already have an account? Sign in here.", new_session_url %>
+        <%= link_to "Don't have an account? Sign up here.", new_user_url %>
       </div>
     </form>
     <div class="sign-up-content">
