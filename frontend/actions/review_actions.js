@@ -8,6 +8,14 @@ var ReviewActions = {
       reviews: reviews
     };
     AppDispatcher.dispatch(payload);
+  },
+
+  receiveSingleReview: function (review) {
+    var payload = {
+      actionType: ReviewConstants.RECEIVE_SINGLE_REVIEW,
+      review: review
+    };
+    AppDispatcher.dispatch(payload);
   }
 };
 

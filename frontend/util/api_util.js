@@ -29,6 +29,35 @@ var ApiUtil = {
         console.log('oh noooo! from fetchUserById');
       }
     });
+  },
+
+  fetchReviewById: function (reviewId) {
+    $.ajax({
+      url: "/api/reviews/" + reviewId,
+      method: "GET",
+      dataType: "json",
+      success: function (review) {
+        ReviewActions.receiveSingleReview(review);
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchReviewById');
+      }
+    });
+  },
+
+  createReview: function (reviewParams) {
+    $.ajax({
+      url: "/api/reviews",
+      method: "post",
+      dataType: "json",
+      data: reviewParams,
+      success: function (review) {
+        ReviewActions.receiveSingleReview(review);
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchReviewById');
+      }
+    });
   }
 };
 

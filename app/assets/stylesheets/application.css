@@ -16,7 +16,7 @@
  */
 
  /* RESET */
- body, div, ul, li, article, h1, h2, h3, input, a, p {
+ body, div, ul, li, article, h1, h2, h3, input, a, p, textarea {
    margin: 0px;
    border: 0px;
    padding: 0px;
@@ -26,11 +26,12 @@
    background: transparent;
    font: inherit;
    box-sizing: inherit;
-   font-family: helvetica;
+   font-family: inherit;
  }
 
 body {
   background-color: #eee;
+  font-family: helvetica;
 }
 
 /* ALL BUTTONS */
@@ -193,12 +194,12 @@ button:hover {
 /* REVIEWS-INDEX */
 
 .reviews-index {
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .reviews-index-item {
   padding: 15px 20px 15px 20px;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .review-info {
@@ -222,4 +223,43 @@ button:hover {
 
 .review-body {
   font-size: 14px;
+}
+
+/* REVIEWS-FORM */
+
+.unstarred {
+  background-color: white;
+}
+
+.review-form {
+  padding: 15px 20px 15px 20px;
+  margin: 15px 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #68829E;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+
+.review-form-body {
+  font-size: 14px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 10px 5px;
+  margin: 10px 0px;
+  width: 100%;
+}
+
+.review-form-body:focus {
+  height: 100px;
+}
+
+.review-form-button {
+  display: none;
+}
+/*this doesnt work....*/
+.review-form-body:focus + .review-form-button {
+  display: block;
 }

@@ -6,14 +6,27 @@ var React = require('react'),
   IndexRoute = ReactRouter.IndexRoute,
   App = require('./components/app'),
   Profile = require('./components/profile'),
+  Review = require('./components/review'),
   ReviewsIndex = require('./components/reviews_index'),
   browserHistory = ReactRouter.browserHistory;
+
+var ProfileWrapper = React.createClass({
+  render: function () {
+    return <Profile userId={window.currentUserId}/>;
+  }
+});
+var routes = (
+  <Route path="/" component={App}>
+    <IndexRoute component={ProfileWrapper}/>
+    <Route path="reviews/:id" component={Review}/>
+  </Route>
+);
 
 
 document.addEventListener("DOMContentLoaded", function () {
   var rootEl = document.getElementById('root');
 
   if (rootEl) {
-    ReactDOM.render(<App/>, rootEl);
+    ReactDOM.render(<Router history={browserHistory}>{routes}</Router>, rootEl);
   }
 });

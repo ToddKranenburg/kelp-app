@@ -5,7 +5,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="main">
-        <Profile userId={window.currentUserId}/>
+        {this.props.children}
       </div>
     );
   }

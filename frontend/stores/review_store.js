@@ -13,21 +13,31 @@ ReviewStore.all = function () {
     allReviews.push(_reviews[keys[i]]);
   }
 
-
   return allReviews;
 };
 
-ReviewStore.resetReviews = function (reviews) {
+ReviewStore.getReviewById = function(reviewId) {
+  return _reviews[reviewId];
+};
+
+ReviewStore.resetAllReviews = function (reviews) {
   _reviews = {};
   for (var i = 0; i < reviews.length; i++) {
     _reviews[reviews[i].id] = reviews[i];
   }
 };
+ReviewStore.resetSingleReview = function (review) {
+  _reviews[review.id] = review;
+};
 
 ReviewStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case ReviewConstants.RECEIVE_ALL_REVIEWS:
-      ReviewStore.resetReviews(payload.reviews);
+      ReviewStore.resetAllReviews(payload.reviews);
+      ReviewStore.__emitChange();
+      break;
+    case ReviewConstants.RECEIVE_SINGLE_REVIEW:
+      ReviewStore.resetSingleReview(payload.review);
       ReviewStore.__emitChange();
       break;
   }
