@@ -2,23 +2,18 @@
   <div class="sign-up group">
     <form class="sign-up-form" action="<%= session_url %>" method="post">
       <h1>Sign in</h1>
-      <label>Username
-        <input
-        type="text"
-        name="user[username]">
-      </label>
 
-      <br>
+      <input
+      type="text"
+      name="user[username]"
+      placeholder="Username">
 
-      <label>Password
-        <input
-        type="password"
-        name="user[password]">
-      </label>
+      <input
+      type="password"
+      name="user[password]"
+      placeholder="Password">
 
-      <br>
-
-      <button>Sign In To Kelp</button>
+      <button>Sign in to Kelp</button>
       <div class="user-link">
         <%= link_to "Don't have an account? Sign up here.", new_user_url %>
       </div>

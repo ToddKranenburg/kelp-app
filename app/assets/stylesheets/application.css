@@ -136,18 +136,20 @@ button:hover {
   font-weight: bold;
 }
 
-.sign-up-form > label {
-  display: block;
-  padding: 5px;
-}
 
-.sign-up-form > label > input {
+.sign-up-form > input {
+  display: block;
   border-radius: 5px;
   border: 1px solid #ccc;
+  padding: 5px;
+  margin: 10px auto;
 }
 
 .sign-up-form > button {
-  margin-top: 10px;
+  margin-top: 20px;
+  width: 178px;
+  height: 30px;
+  border: 1px solid #ccc;
 }
 
 .user-link {
