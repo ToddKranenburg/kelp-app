@@ -1,15 +1,16 @@
 var React = require('react'),
   ApiUtil = require('../util/api_util'),
+  ReviewsIndexItem = require('../components/reviews_index_item'),
   ReviewStore = require('../stores/review_store');
 
 var ReviewsIndex = React.createClass({
   render: function(){
     var reviews = [];
     this.props.reviews.forEach(function (review) {
-      reviews.push( <div key={review.id}>{review.body}</div> );
+      reviews.push( <ReviewsIndexItem review={review} key={review.id}/> );
     });
     return (
-        <div>
+        <div className="reviews-index">
           {reviews}
         </div>
     );

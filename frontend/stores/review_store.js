@@ -3,7 +3,7 @@ var AppDispatcher = require('../dispatcher/dispatcher');
 var ReviewConstants = require('../constants/review_constants');
 var ReviewStore = new Store(AppDispatcher);
 
-_reviews = {};
+var _reviews = {};
 
 ReviewStore.all = function () {
   var keys = Object.keys(_reviews);
