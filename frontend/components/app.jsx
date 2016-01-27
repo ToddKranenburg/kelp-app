@@ -1,11 +1,12 @@
-var React = require('react');
+var React = require('react'),
+  Profile = require('../components/profile');
 
 var App = React.createClass({
-  render: function(){
+  render: function() {
     return (
-        <div>
-          {this.props.children}
-        </div>
+      <div>
+        <Profile/>
+      </div>
     );
   }
 });

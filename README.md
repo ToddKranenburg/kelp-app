@@ -1,8 +1,8 @@
 # Kelp
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Heroku link][heroku]
 
-[heroku]: https://intense-beach-12058.herokuapp.com
+[heroku]: https://kelp-app.herokuapp.com/
 
 ## Minimum Viable Product
 
