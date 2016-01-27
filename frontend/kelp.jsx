@@ -12,7 +12,11 @@ var React = require('react'),
 
 var ProfileWrapper = React.createClass({
   render: function () {
-    return <Profile userId={window.currentUserId}/>;
+    if (window.currentUserId) {
+      return <Profile userId={window.currentUserId}/>;
+    } else {
+      return <div>Figure out home page</div>;
+    }
   }
 });
 var routes = (

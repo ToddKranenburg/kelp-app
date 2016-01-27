@@ -16,6 +16,21 @@ var ApiUtil = {
     });
   },
 
+  fetchReviewsByUserId: function (userId) {
+    $.ajax({
+      url: "/api/reviews",
+      method: "GET",
+      dataType: "json",
+      data: {user_id: userId},
+      success: function (reviews) {
+        ReviewActions.receiveAllReviews(reviews);
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchReviewsByUserId');
+      }
+    });
+  },
+
   fetchUserById: function (userId) {
     $.ajax({
       url: "/api/users/" + userId,

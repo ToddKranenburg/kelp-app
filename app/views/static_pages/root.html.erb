@@ -2,5 +2,7 @@
 </div>
 
 <script type="text/javascript">
-  window.currentUserId = <%= current_user.id %>;
+  <% if current_user %>
+    window.currentUserId = <%= current_user.id %>;
+  <% end %>
 </script>
