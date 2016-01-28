@@ -10,7 +10,8 @@ var ReviewForm = React.createClass({
       return ({
         body: "",
         rating: 0,
-        hoverRating: null
+        hoverRating: null,
+        formBodyKlass: "review-form-body"
       });
   },
 
@@ -23,7 +24,12 @@ var ReviewForm = React.createClass({
     };
 
     ApiUtil.createReview(reviewParams);
-    this.setState({body: "", rating: 0, hoverRating: null});
+    this.setState({
+      body: "",
+      rating: 0,
+      hoverRating: null,
+      formBodyKlass: "review-form-body"
+    });
   },
 
   handleStarClick: function (starIndex) {
@@ -41,6 +47,10 @@ var ReviewForm = React.createClass({
 
   handleStarUnhover: function (starIndex) {
     this.setState({hoverRating: null});
+  },
+
+  expandForm: function () {
+    this.setState({formBodyKlass: "review-form-body expanded"});
   },
 
   render: function () {
@@ -73,8 +83,9 @@ var ReviewForm = React.createClass({
         {stars}
         <form onSubmit={this.submitForm}>
           <textarea
-            className="review-form-body"
+            className={this.state.formBodyKlass}
             placeholder="Write a new review..."
+            onFocus={this.expandForm}
             valueLink={this.linkState("body")}
           />
         <button className={buttonKlass}>Post</button>

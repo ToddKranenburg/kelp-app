@@ -9,7 +9,7 @@ var ReviewsIndexItem = React.createClass({
     for (var i = 0; i < review.rating; i++) {
       stars.push(<i className="fa fa-star" key={i}></i>);
     }
-    var date = new Date(review.date);
+    var date = new Date(review.created_at);
 
     return (
       <article className="reviews-index-item">

@@ -241,7 +241,7 @@ button:hover {
   width: 100%;
 }
 
-.review-form-body:focus {
+.expanded {
   height: 100px;
 }
 
