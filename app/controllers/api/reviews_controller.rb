@@ -4,9 +4,9 @@ class Api::ReviewsController < ApplicationController
     user_id = params[:user_id]
 
     if (params[:user_id])
-      @reviews = User.find(user_id).reviews
+      @reviews = Review.includes(:author).where("author_id = ?", user_id).includes(:business)
     else
-      @reviews = Review.all
+      @reviews = Review.includes(:author).includes(:business).all
     end
   end
 

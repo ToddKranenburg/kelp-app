@@ -1,10 +1,11 @@
 var React = require('react'),
   ApiUtil = require('../util/api_util'),
   LinkedStateMixin = require('react-addons-linked-state-mixin'),
+  History = require('react-router').History,
   ReviewStore = require('../stores/review_store');
 
 var ReviewForm = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [LinkedStateMixin, History],
 
   getInitialState: function () {
       return ({
@@ -25,6 +26,7 @@ var ReviewForm = React.createClass({
     } else {
       businessId = this.state.selectedBusinessId;
     }
+
     var reviewParams = {
       review: {
         body: this.state.body,
@@ -34,6 +36,8 @@ var ReviewForm = React.createClass({
     };
 
     ApiUtil.createReview(reviewParams);
+    // 
+    // history.pushState(null, 'businesses/' + businessId);
     this.setState({
       body: "",
       rating: 0,
