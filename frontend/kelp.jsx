@@ -15,7 +15,7 @@ var ProfileWrapper = React.createClass({
     if (window.currentUserId) {
       return <Profile userId={window.currentUserId}/>;
     } else {
-      return <div>Figure out home page</div>;
+      window.location = "http://localhost:3000/session/new";
     }
   }
 });
