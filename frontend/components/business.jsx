@@ -70,7 +70,7 @@ var Business = React.createClass({
         </div>
       );
     } else {
-      return <div>NOT HERE!</div>;
+      return <div></div>;
     }
   }
 });
