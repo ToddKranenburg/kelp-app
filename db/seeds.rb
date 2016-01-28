@@ -18,7 +18,7 @@ Review.destroy_all
   end
 end
  user = User.new(username: "Demo", password: "Password")
-
+ user.save!
  3.times do
    user.reviews.create!(body: Faker::Hipster.paragraph, rating: 3)
  end
