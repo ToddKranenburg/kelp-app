@@ -18,7 +18,7 @@ var Profile = React.createClass({
   componentDidMount: function () {
     this.reviewStoreListener = ReviewStore.addListener(this.reviewsChanged);
     this.userStoreListener = UserStore.addListener(this.userChanged);
-    ApiUtil.fetchAllReviews();
+    ApiUtil.fetchReviewsByUserId(this.props.userId);
     ApiUtil.fetchUserById(this.props.userId);
   },
 
@@ -39,10 +39,14 @@ var Profile = React.createClass({
     switch(tabConstant) {
       case TabConstants.MY_REVIEWS:
         return function () {
-          ApiUtil.fetchReviewsByUserId(window.currentUserId);
+          this.myReviewsKlass = "tab";
+          this.allReviewsKlass = "tab unselected";
+          ApiUtil.fetchReviewsByUserId(this.props.userId);
         };
       case TabConstants.ALL_REVIEWS:
         return function () {
+          this.allReviewsKlass = "tab";
+          this.myReviewsKlass = "tab unselected";
           ApiUtil.fetchAllReviews();
         };
     }
@@ -54,7 +58,7 @@ var Profile = React.createClass({
         <div className="profile group">
           <div className="profile-reviews">
             <ReviewForm/>
-            <Tab tabClickHandler={this.tabClicked}/>
+            <Tab tabClickHandler={this.tabClicked} userId={this.props.userId}/>
             <ReviewsIndex reviews={this.state.reviews}/>
           </div>
           <div className="profile-info">

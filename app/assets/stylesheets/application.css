@@ -28,10 +28,12 @@
    font-family: inherit;
  }
 
-body {
-  background-color: #eee;
-  font-family: helvetica;
+html {
+ background: #eee;
+ font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
 }
+
+
 
 /* ALL BUTTONS */
 button {
@@ -43,6 +45,16 @@ button {
   color: white;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.main {
+  background-color: white;
+  width: 900px;
+  margin: auto;
+  height: 600px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 button:hover {
@@ -120,13 +132,7 @@ button:hover {
  /* MAIN */
 
  .main {
-   box-sizing: border-box;
-   width: 900px;
-   min-height: 500px;
-   margin: auto;
-   background-color: white;
-   padding: 20px;
-   border: 1px solid #ccc;
+
  }
 /* SIGN IN / SIGN OUT*/
 
@@ -181,6 +187,15 @@ button:hover {
 }
 
 /* PROFILE */
+.profile {
+  box-sizing: border-box;
+  width: 900px;
+  min-height: 500px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
 .profile-reviews {
   float: left;
   width: 70%;
@@ -193,8 +208,15 @@ button:hover {
 
 /* TAB */
 .tab-bar {
-  border-bottom: 1px solid #ccc;
 
+}
+
+.empty-tab {
+  height: 40px;
+  width: 387px;
+  display: block;
+  float: right;
+  border-bottom: 1px solid #ccc;
 }
 
 .tab {
@@ -205,10 +227,9 @@ button:hover {
   border-bottom: 1px solid white;
   border-top-left-radius: 5px;
   box-sizing: border-box;
-
 }
 
-.tab-unselected {
+.unselected {
   border-bottom: 1px solid #ccc;
 }
 

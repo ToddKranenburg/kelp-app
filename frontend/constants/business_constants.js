@@ -1,0 +1,6 @@
+var BusinessConstants = {
+  RECEIVE_ALL_BUSINESSES: "RECEIVE_ALL_BUSINESSES",
+  RECEIVE_SINGLE_BUSINESS: "RECEIVE_SINGLE_BUSINESS"
+};
+
+module.exports = BusinessConstants;

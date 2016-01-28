@@ -1,0 +1,53 @@
+.business {
+  background: white;
+  display: block;
+}
+
+.business-header {
+  padding: 20px 100px;
+  height: 150px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  background-color: #eee;
+
+}
+
+.business-content {
+  width: 900px;
+  margin: auto;
+}
+
+.business-review-form {
+  width: 900px;
+  margin: auto;
+}
+
+.business-header-name {
+  display: block;
+  position: absolute;
+  font-size: 36px;
+  font-weight: bold;
+  font: helvetica;
+}
+
+.business-header-button {
+  display: block;
+  position: absolute;
+  right: 40px;
+  transform: translateX(-50%) translateY(5%);
+
+
+  display: block;
+  padding: 10px 40px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #68829E;
+  margin: auto;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.business-header-button:hover {
+  background-color: #505160;
+}

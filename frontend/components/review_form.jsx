@@ -11,15 +11,25 @@ var ReviewForm = React.createClass({
         body: "",
         rating: 0,
         hoverRating: null,
+        selectedBusinessId: null,
         formBodyKlass: "review-form-body"
       });
   },
 
   submitForm: function () {
+    var businessId;
+    var business = this.props.business;
+
+    if (business) {
+      businessId = business.id;
+    } else {
+      businessId = this.state.selectedBusinessId;
+    }
     var reviewParams = {
       review: {
         body: this.state.body,
-        rating: this.state.rating
+        rating: this.state.rating,
+        business_id: businessId
       }
     };
 

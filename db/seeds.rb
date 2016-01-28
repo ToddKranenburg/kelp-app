@@ -10,11 +10,13 @@ User.destroy_all
 Review.destroy_all
 
 
-5.times do
-  user = User.new(username: Faker::Hipster.word, password: "password")
-  user.save!
-  3.times do
-    user.reviews.create!(body: Faker::Hipster.paragraph, rating: 3)
-  end
-end
-User.create!(username: "Nemo", password: "Password")
+# 5.times do
+#   user = User.new(username: Faker::Hipster.word, password: "password")
+#   user.save!
+#   3.times do
+#     user.reviews.create!(body: Faker::Hipster.paragraph, rating: 3)
+#   end
+# end
+nemo = User.create!(username: "Nemo", password: "Password")
+biz = Business.create!(name: "Biz", lat: 1.1, lng: 2.3)
+biz.reviews.create!(body: "body", rating: 5, author_id: nemo.id)

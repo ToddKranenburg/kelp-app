@@ -11,6 +11,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
+
     @review = current_user.reviews.create(review_params)
   end
 
@@ -26,6 +27,6 @@ class Api::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:body, :rating)
+    params.require(:review).permit(:body, :rating, :business_id)
   end
 end

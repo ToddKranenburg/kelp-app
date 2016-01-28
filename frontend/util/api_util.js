@@ -1,7 +1,23 @@
 var ReviewActions = require('../actions/review_actions');
 var UserActions = require('../actions/user_actions');
+var BusinessActions = require('../actions/business_actions');
 
 var ApiUtil = {
+  createReview: function (reviewParams) {
+    $.ajax({
+      url: "/api/reviews",
+      method: "POST",
+      dataType: "json",
+      data: reviewParams,
+      success: function (review) {
+        ReviewActions.receiveSingleReview(review);
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchReviewById');
+      }
+    });
+  },
+
   fetchAllReviews: function () {
     $.ajax({
       url: "/api/reviews",
@@ -31,6 +47,20 @@ var ApiUtil = {
     });
   },
 
+  fetchReviewById: function (reviewId) {
+    $.ajax({
+      url: "/api/reviews/" + reviewId,
+      method: "GET",
+      dataType: "json",
+      success: function (review) {
+        ReviewActions.receiveSingleReview(review);
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchReviewById');
+      }
+    });
+  },
+
   fetchUserById: function (userId) {
     $.ajax({
       url: "/api/users/" + userId,
@@ -46,34 +76,21 @@ var ApiUtil = {
     });
   },
 
-  fetchReviewById: function (reviewId) {
+  fetchBusinessById: function (businessId) {
     $.ajax({
-      url: "/api/reviews/" + reviewId,
+      url: "/api/businesses/" + businessId,
       method: "GET",
       dataType: "json",
-      success: function (review) {
-        ReviewActions.receiveSingleReview(review);
+      success: function (business) {
+        BusinessActions.receiveSingleBusiness(business);
       },
       error: function (data) {
-        console.log('oh noooo! from fetchReviewById');
-      }
-    });
-  },
-
-  createReview: function (reviewParams) {
-    $.ajax({
-      url: "/api/reviews",
-      method: "post",
-      dataType: "json",
-      data: reviewParams,
-      success: function (review) {
-        ReviewActions.receiveSingleReview(review);
-      },
-      error: function (data) {
-        console.log('oh noooo! from fetchReviewById');
+        console.log('oh noooo! from fetchBusinessById');
       }
     });
   }
+
+
 };
 
 module.exports = ApiUtil;

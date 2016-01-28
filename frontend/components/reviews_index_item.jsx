@@ -10,11 +10,12 @@ var ReviewsIndexItem = React.createClass({
       stars.push(<i className="fa fa-star" key={i}></i>);
     }
     var date = new Date(review.created_at);
-
     return (
       <article className="reviews-index-item">
         <div className="review-info group">
-          <h2 className="review-author">{review.author.username} reviewed someplace.</h2>
+          <h2 className="review-author">
+            {review.author.username} reviewed someplace.
+          </h2>
           <h3 className="review-date">{date.toDateString()}</h3>
         </div>
         <div className="review-stars">
