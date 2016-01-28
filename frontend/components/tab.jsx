@@ -4,7 +4,7 @@ var React = require('react'),
 var Tab = React.createClass({
   render: function() {
     return (
-      <div className="tabs-bar">
+      <div className="tab-bar group">
         <div className="tab" onClick={this.props.tabClickHandler(TabConstants.MY_REVIEWS)}>
           My Reviews
         </div>

@@ -12,7 +12,6 @@ var ReviewsIndex = React.createClass({
     });
     return (
         <div className="reviews-index">
-          <ReviewForm/>
           {reviews}
         </div>
     );

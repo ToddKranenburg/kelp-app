@@ -1,8 +1,10 @@
 var React = require('react'),
   ReviewStore = require('../stores/review_store'),
+  ReviewForm = require('../components/review_form'),
   UserStore = require('../stores/user_store'),
   ApiUtil = require('../util/api_util'),
   TabConstants = require('../constants/tab_constants'),
+  Tab = require('../components/tab'),
   ReviewsIndex = require('./reviews_index.jsx');
 
 var Profile = React.createClass({
@@ -37,7 +39,7 @@ var Profile = React.createClass({
     switch(tabConstant) {
       case TabConstants.MY_REVIEWS:
         return function () {
-          ApiUtil.fetchReviewsByUserId();
+          ApiUtil.fetchReviewsByUserId(window.currentUserId);
         };
       case TabConstants.ALL_REVIEWS:
         return function () {
@@ -50,8 +52,11 @@ var Profile = React.createClass({
     if (this.state.reviews && this.state.user) {
       return (
         <div className="profile group">
-          <Tab tabClickHandler={this.tabClicked}/>
-          <ReviewsIndex reviews={this.state.reviews}/>
+          <div className="profile-reviews">
+            <ReviewForm/>
+            <Tab tabClickHandler={this.tabClicked}/>
+            <ReviewsIndex reviews={this.state.reviews}/>
+          </div>
           <div className="profile-info">
             {this.state.user.username}
           </div>

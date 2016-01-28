@@ -182,48 +182,37 @@ button:hover {
 }
 
 /* PROFILE */
-.reviews-index {
+.profile-reviews {
   float: left;
   width: 70%;
+  border-right: 1px solid #ccc;
 }
 .profile-info {
   float: left;
   width: 30%;
 }
 
-/* REVIEWS-INDEX */
+/* TAB */
+.tab-bar {
+  border-bottom: 1px solid #ccc;
 
-.reviews-index {
+}
+
+.tab {
+  float: right;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  border-top-left-radius: 5px;
+  box-sizing: border-box;
+
+}
+
+.tab-unselected {
   border-bottom: 1px solid #ccc;
 }
 
-.reviews-index-item {
-  padding: 15px 20px 15px 20px;
-  border-top: 1px solid #ccc;
-}
-
-.review-info {
-  margin: 5px 0px;
-}
-
-.review-author {
-  display: block;
-  float: left;
-}
-
-.review-date {
-  display: block;
-  float: right;
-  font-size: 12px;
-}
-
-.review-stars {
-  margin: 5px 0px;
-}
-
-.review-body {
-  font-size: 14px;
-}
 
 /* REVIEWS-FORM */
 
@@ -233,7 +222,7 @@ button:hover {
 
 .review-form {
   padding: 15px 20px 15px 20px;
-  margin: 15px 0px;
+  margin: 15px 20px 15px 0px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #68829E;
@@ -259,7 +248,39 @@ button:hover {
 .review-form-button {
   display: none;
 }
-/*this doesnt work....*/
+
 .review-form-body:focus + .review-form-button {
   display: block;
+}
+
+/* REVIEWS-INDEX */
+
+.reviews-index {
+  margin-top: 10px;
+  padding-right: 20px;
+}
+
+.reviews-index-item {
+  padding: 15px 20px 15px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.review-author {
+  display: block;
+  float: left;
+}
+
+.review-date {
+  display: block;
+  float: right;
+  font-size: 12px;
+}
+
+.review-stars {
+  margin: 5px 0px;
+}
+
+.review-body {
+  font-size: 14px;
+  margin-bottom: 5px;
 }
