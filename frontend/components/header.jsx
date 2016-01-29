@@ -30,7 +30,6 @@ var Header = React.createClass({
         <div>
           <div className="header-buttons">
             <Link className="my-button" to={'/'}>{CurrentUserStore.getCurrentUser().username}</Link>
-
             <div className="my-button" onClick={this.logout}>Sign Out</div>
           </div>
         </div>
