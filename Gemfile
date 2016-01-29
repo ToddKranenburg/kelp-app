@@ -17,6 +17,8 @@ gem 'aws-sdk', '~> 1.6'
 
 gem 'figaro'
 
+gem 'paperclip'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

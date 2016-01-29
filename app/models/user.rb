@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy, foreign_key: :author_id
-
-  attr_reader :password
+  has_attached_file :profile_picture, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: "/assets/images/default_picture.png"
+  validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
   validates :username, uniqueness: true, presence: true
   validates :session_token, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
+  attr_reader :password
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end

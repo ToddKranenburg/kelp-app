@@ -4,11 +4,23 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(username: params[:username], password: params[:password])
+    @user = User.new(user_params)
     if (@user.save)
       render :show
     else
-      render json: ["Improper sign up credentials"]
+      render json: @user.errors.full_messages
     end
+  end
+
+  def update
+    @user = current_user
+    @user.update(user_params)
+    render :show
+  end
+
+  private
+
+  def user_params
+    params.permit(:username, :password, :profile_picture)
   end
 end

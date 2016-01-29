@@ -5,6 +5,7 @@ var React = require('react'),
   ApiUtil = require('../util/api_util'),
   TabConstants = require('../constants/tab_constants'),
   Tab = require('../components/tab'),
+  ProfilePage = require('../components/profile_page'),
   ReviewsIndex = require('./reviews/reviews_index.jsx');
 
 var Profile = React.createClass({
@@ -47,6 +48,11 @@ var Profile = React.createClass({
     }
   },
 
+  uploadImage: function (e) {
+    e.preventDefault();
+
+  },
+
   render: function(){
     if (this.state.reviews && this.state.user) {
       return (
@@ -56,9 +62,7 @@ var Profile = React.createClass({
             <Tab tabClickHandler={this.tabClicked} userId={this.state.user.id}/>
             <ReviewsIndex reviews={this.state.reviews}/>
           </div>
-          <div className="profile-info">
-            {this.state.user.username}
-          </div>
+          <ProfilePage/>
         </div>
       );
     } else {
