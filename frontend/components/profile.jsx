@@ -1,38 +1,33 @@
 var React = require('react'),
   ReviewStore = require('../stores/review_store'),
-  ReviewForm = require('../components/review_form'),
-  UserStore = require('../stores/user_store'),
+  ReviewForm = require('../components/reviews/review_form'),
+  CurrentUserStore = require('../stores/current_user_store'),
   ApiUtil = require('../util/api_util'),
   TabConstants = require('../constants/tab_constants'),
   Tab = require('../components/tab'),
-  ReviewsIndex = require('./reviews_index.jsx');
+  ReviewsIndex = require('./reviews/reviews_index.jsx');
 
 var Profile = React.createClass({
   getInitialState: function () {
     return ({
       reviews: null,
-      user: null
+      user: CurrentUserStore.getCurrentUser()
     });
   },
 
   componentDidMount: function () {
-    this.reviewStoreListener = ReviewStore.addListener(this.reviewsChanged);
-    this.userStoreListener = UserStore.addListener(this.userChanged);
-    ApiUtil.fetchReviewsByUserId(this.props.userId);
-    ApiUtil.fetchUserById(this.props.userId);
+    this.reviewStoreListener =
+      ReviewStore.addListener(this.reviewsChanged);
+
+    ApiUtil.fetchReviewsByUserId(this.state.user.id);
   },
 
   componentWillUnmount: function () {
     this.reviewStoreListener.remove();
-    this.userStoreListener.remove();
   },
 
   reviewsChanged: function () {
     this.setState({reviews: ReviewStore.all()});
-  },
-
-  userChanged: function () {
-    this.setState({user: UserStore.getUser()});
   },
 
   tabClicked: function (tabConstant) {
@@ -58,7 +53,7 @@ var Profile = React.createClass({
         <div className="profile group">
           <div className="profile-reviews">
             <ReviewForm/>
-            <Tab tabClickHandler={this.tabClicked} userId={this.props.userId}/>
+            <Tab tabClickHandler={this.tabClicked} userId={this.state.user.id}/>
             <ReviewsIndex reviews={this.state.reviews}/>
           </div>
           <div className="profile-info">

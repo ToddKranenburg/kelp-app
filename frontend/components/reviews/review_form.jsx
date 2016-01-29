@@ -1,8 +1,8 @@
 var React = require('react'),
-  ApiUtil = require('../util/api_util'),
+  ApiUtil = require('../../util/api_util'),
   LinkedStateMixin = require('react-addons-linked-state-mixin'),
   History = require('react-router').History,
-  ReviewStore = require('../stores/review_store');
+  ReviewStore = require('../../stores/review_store');
 
 var ReviewForm = React.createClass({
   mixins: [LinkedStateMixin, History],
@@ -36,7 +36,7 @@ var ReviewForm = React.createClass({
     };
 
     ApiUtil.createReview(reviewParams);
-    // 
+    //
     // history.pushState(null, 'businesses/' + businessId);
     this.setState({
       body: "",
@@ -87,9 +87,9 @@ var ReviewForm = React.createClass({
       );
     }
 
-    var buttonKlass = "review-form-button";
+    var buttonKlass = "review-form-button my-button";
     if (this.state.rating > 0) {
-      buttonKlass = "show-button";
+      buttonKlass = "show-button my-button";
     }
 
     return (

@@ -1,8 +1,8 @@
 var React = require('react'),
-  ApiUtil = require('../util/api_util'),
+  ApiUtil = require('../../util/api_util'),
   ReactRouter = require('react-router'),
   Link = ReactRouter.Link,
-  ReviewStore = require('../stores/review_store');
+  ReviewStore = require('../../stores/review_store');
 
 var ReviewsIndexItem = React.createClass({
   render: function () {

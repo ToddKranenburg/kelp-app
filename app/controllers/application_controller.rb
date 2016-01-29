@@ -33,9 +33,6 @@ class ApplicationController < ActionController::Base
       current_user.reset_session_token!
       session[:session_token] = nil
       @current_user = nil
-    else
-      flash[:errors] = ["You are not signed in!"]
-      redirect_to new_session_url
     end
   end
 

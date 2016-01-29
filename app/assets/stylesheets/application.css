@@ -36,7 +36,7 @@ html {
 
 
 /* ALL BUTTONS */
-button {
+.my-button {
   display: block;
   padding: 5px 20px;
   font-size: 12px;
@@ -57,7 +57,7 @@ button {
   border-bottom: 1px solid #ccc;
 }
 
-button:hover {
+.my-button:hover {
   background-color: #505160;
 }
 
@@ -69,7 +69,9 @@ button:hover {
   clear: both;
 }
 
-
+a:hover {
+  cursor: pointer;
+}
 
 /*Header*/
 
@@ -77,7 +79,7 @@ button:hover {
   background-color: #68829E;
   display: block;
   box-shadow: 0px 1px 2px black;
-  position: relative;
+
  }
 
  .header-nav {
@@ -105,7 +107,7 @@ button:hover {
   right: 20px;
  }
 
-.header-buttons > a {
+.header-buttons > .my-button {
   display: block;
   text-align: center;
   padding: 5px 20px;
@@ -115,10 +117,6 @@ button:hover {
   border: 1px solid #ccc;
   margin: 5px 0px;
   color: white;
- }
-
- .header-buttons > a:hover {
-   background-color: #505160;
  }
 
  .demo-form {
@@ -132,7 +130,10 @@ button:hover {
  /* MAIN */
 
  .main {
-
+   position: absolute;
+   z-index: -1;
+   left: 50%;
+   transform: translateX(-50%);
  }
 /* SIGN IN / SIGN OUT*/
 

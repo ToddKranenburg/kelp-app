@@ -1,8 +1,8 @@
 var React = require('react'),
-  ApiUtil = require('../util/api_util'),
-  ReviewsIndexItem = require('../components/reviews_index_item'),
-  ReviewForm = require('../components/review_form'),
-  ReviewStore = require('../stores/review_store');
+  ApiUtil = require('../../util/api_util'),
+  ReviewsIndexItem = require('./reviews_index_item'),
+  ReviewForm = require('./review_form'),
+  ReviewStore = require('../../stores/review_store');
 
 var ReviewsIndex = React.createClass({
   render: function(){

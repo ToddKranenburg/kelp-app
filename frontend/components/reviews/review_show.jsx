@@ -1,6 +1,6 @@
 var React = require('react'),
-  ApiUtil = require('../util/api_util'),
-  ReviewStore = require('../stores/review_store');
+  ApiUtil = require('../../util/api_util'),
+  ReviewStore = require('../../stores/review_store');
 
 var Review = React.createClass({
   getInitialState: function () {

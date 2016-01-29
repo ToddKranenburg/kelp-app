@@ -8,7 +8,23 @@ var UserActions = {
       user: user
     };
     AppDispatcher.dispatch(payload);
+  },
+
+  receiveCurrentUser: function (user) {
+    var payload = {
+      actionType: UserConstants.RECEIVE_CURRENT_USER,
+      currentUser: user
+    };
+    AppDispatcher.dispatch(payload);
+  },
+
+  logoutCurrentUser: function () {
+    var payload = {
+      actionType: UserConstants.LOGOUT
+    };
+    AppDispatcher.dispatch(payload);
   }
+
 };
 
 module.exports = UserActions;

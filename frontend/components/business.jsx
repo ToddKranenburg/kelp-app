@@ -1,7 +1,7 @@
 var React = require('react'),
   ApiUtil = require('../util/api_util'),
-  ReviewForm = require('./review_form'),
-  ReviewsIndex = require('./reviews_index'),
+  ReviewForm = require('./reviews/review_form'),
+  ReviewsIndex = require('./reviews/reviews_index'),
   BusinessStore = require('../stores/business_store'),
   ReviewStore = require('../stores/review_store');
 
