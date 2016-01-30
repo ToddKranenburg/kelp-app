@@ -7,11 +7,13 @@ var Tab = React.createClass({
     var allReviewsKlass = this.allReviewsKlass || "tab unselected";
     return (
       <div className="tab-bar group">
-        <div className={myReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.MY_REVIEWS).bind(this)}>
-          My Reviews
-        </div>
-        <div className={allReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.ALL_REVIEWS).bind(this)}>
-          All Reviews
+        <div className="full-tabs">
+          <div className={myReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.MY_REVIEWS).bind(this)}>
+            My Reviews
+          </div>
+          <div className={allReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.ALL_REVIEWS).bind(this)}>
+            All Reviews
+          </div>
         </div>
         <div className="empty-tab">
         </div>

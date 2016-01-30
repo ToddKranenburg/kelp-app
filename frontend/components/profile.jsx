@@ -58,9 +58,8 @@ var Profile = React.createClass({
       return (
         <div className="profile group">
           <div className="profile-reviews">
-            <ReviewForm/>
             <Tab tabClickHandler={this.tabClicked} userId={this.state.user.id}/>
-            <ReviewsIndex reviews={this.state.reviews}/>
+            <ReviewsIndex reviews={this.state.reviews} indexType="profile"/>
           </div>
           <ProfilePage/>
         </div>

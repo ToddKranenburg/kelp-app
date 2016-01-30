@@ -4,19 +4,18 @@
 }
 
 .business-header {
-  padding: 20px 100px;
+  padding: 20px 50px;
   height: 150px;
   border-bottom: 1px solid #ccc;
   position: relative;
 }
 
 .business-content {
-  width: 900px;
   margin: auto;
+  padding: 0px 20px;
 }
 
 .business-review-form {
-  width: 900px;
   margin: auto;
 }
 
@@ -30,13 +29,16 @@
 
 .business-header-button {
   display: block;
+  margin: auto;
+  /*width: 150px;
+  text-align: center;*/
   position: absolute;
-  right: 40px;
+  right: -40px;
   transform: translateX(-50%) translateY(5%);
 
 
   display: block;
-  padding: 10px 40px;
+  padding: 10px 50px;
   font-size: 14px;
   font-weight: bold;
   background-color: #68829E;
@@ -48,4 +50,5 @@
 
 .business-header-button:hover {
   background-color: #505160;
+  cursor: pointer;
 }

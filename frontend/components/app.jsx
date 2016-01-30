@@ -14,9 +14,11 @@ var App = React.createClass({
 
   render: function() {
     return (
-      <div className="main">
+      <div>
         <Header/>
-        {this.props.children}
+        <div className="main">
+          {this.props.children}
+        </div>
       </div>
     );
   }

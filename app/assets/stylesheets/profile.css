@@ -1,7 +1,35 @@
-.preview-image {
-  width: 100px;
+.profile-info {
+  padding: 20px;
+  position: relative;
 }
 
 .profile-picture {
-  width: 200px;
+  width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-username {
+  position: absolute;
+  top: 70px;
+  left: 140px;
+  max-width: 100px;
+  transform: translateY(-50%);
+  font-weight: bold;
+  color: #68829E;
+}
+
+.profile-info > .fa-cog {
+  position: absolute;
+  transform: translateY(-70%) translateX(-120%);
+  top: 115px;
+}
+
+.profile-info .fa-cog:hover {
+  cursor: pointer;
+}
+
+.preview-image {
+  width: 100px;
+  float: left;
 }

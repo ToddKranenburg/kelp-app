@@ -36,7 +36,7 @@ var Header = React.createClass({
       );
     } else {
       headerContent = (
-        <div className="header">
+        <div>
           <div className="demo-form">
             <form onSubmit={this.submitHiddenForm}>
               <input type="hidden" name="username" value="Nemo"/>
@@ -53,7 +53,7 @@ var Header = React.createClass({
     }
 
     return (
-      <div className="header">
+      <div className="my-header">
         <nav className="group header-nav">
           <Link className="header-logo" to={'/'}>
             kelp

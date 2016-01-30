@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy, foreign_key: :author_id
-  has_attached_file :profile_picture, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: "/assets/images/default_picture.png"
+  has_attached_file :profile_picture, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: ActionController::Base.helpers.asset_path('default_picture.png')
   validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token

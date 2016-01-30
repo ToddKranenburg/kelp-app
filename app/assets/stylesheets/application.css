@@ -59,6 +59,7 @@ html {
 
 .my-button:hover {
   background-color: #505160;
+  cursor: pointer;
 }
 
 /* CLEAR FIX */
@@ -75,11 +76,11 @@ a:hover {
 
 /*Header*/
 
-.header {
+.my-header {
   background-color: #68829E;
   display: block;
   box-shadow: 0px 1px 2px black;
-
+  padding: 5px 0px;
  }
 
  .header-nav {
@@ -195,12 +196,12 @@ a:hover {
   margin: auto;
   background-color: white;
   padding: 20px;
-  border: 1px solid #ccc;
 }
 .profile-reviews {
   float: left;
   width: 70%;
   border-right: 1px solid #ccc;
+  margin-top: 20px;
 }
 .profile-info {
   float: left;
@@ -208,8 +209,10 @@ a:hover {
 }
 
 /* TAB */
-.tab-bar {
-
+.full-tabs {
+  border-top: 1px solid #ccc;
+  float: right;
+  border-top-left-radius: 5px;
 }
 
 .empty-tab {
@@ -224,10 +227,13 @@ a:hover {
   float: right;
   padding: 10px;
   border-left: 1px solid #ccc;
-  border-top: 1px solid #ccc;
   border-bottom: 1px solid white;
   border-top-left-radius: 5px;
   box-sizing: border-box;
+}
+
+.tab:hover {
+  cursor: pointer;
 }
 
 .unselected {
@@ -265,25 +271,52 @@ a:hover {
 .expanded {
   height: 100px;
 }
+.review-form-body:focus + .review-form-button {
+  display: block;
+}
 
 .review-form-button {
   display: none;
 }
 
-.review-form-body:focus + .review-form-button {
-  display: block;
-}
 
 /* REVIEWS-INDEX */
 
 .reviews-index {
   margin-top: 10px;
   padding-right: 20px;
+  position: relative;
 }
+
+.review-info {
+  padding-left: 20px;
+  float: left;
+}
+
 
 .reviews-index-item {
   padding: 15px 20px 15px 20px;
   border-bottom: 1px solid #ccc;
+}
+
+.business-link {
+  text-decoration: none;
+  color: #68829E;
+}
+
+.business-link:hover {
+  color: black;
+}
+
+.review-image {
+  float: left;
+  width: 70px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.review-info {
+  float: left;
 }
 
 .review-author {
@@ -293,15 +326,26 @@ a:hover {
 
 .review-date {
   display: block;
-  float: right;
+  position: absolute;
+  right: 20px;
   font-size: 12px;
 }
 
 .review-stars {
   margin: 5px 0px;
+  color: #68829E;
 }
 
 .review-body {
   font-size: 14px;
   margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.business-review {
+  max-width: 700px;
+}
+
+.profile-review {
+  max-width: 429px;
 }
