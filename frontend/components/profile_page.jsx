@@ -1,6 +1,8 @@
-var React = require('react');
-var UsersApiUtil = require('../util/users_api_util');
-var CurrentUserStore = require('../stores/current_user_store');
+var React = require('react'),
+  UsersApiUtil = require('../util/users_api_util'),
+  ReactRouter = require('react-router'),
+  Link = ReactRouter.Link,
+  CurrentUserStore = require('../stores/current_user_store');
 
 var ProfilePage = React.createClass({
   getInitialState: function () {
@@ -68,6 +70,7 @@ var ProfilePage = React.createClass({
         <h2 className="profile-username">{currentUser.username}</h2>
         <i className="fa fa-cog" onClick={this.toggleUploading}></i>
         {imageUpdate}
+        <Link className="my-button" to='/business-form'>Add a New Business to Kelp</Link>
       </div>
     );
   }

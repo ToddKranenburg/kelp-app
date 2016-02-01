@@ -27,14 +27,18 @@ var Map = React.createClass({
     this.createChooseBusinessMap(map, options);
   },
 
-//change this for specific cities!
-  searchMap: function () {
+  clearMarkers: function () {
     this.markers = this.markers || [];
     for (var j = 0; j < this.markers.length; j++) {
       var marker = this.markers[j].marker;
       marker.setMap(null);
     }
     this.markers = [];
+  },
+
+//change this for specific cities!
+  searchMap: function () {
+    this.clearMarkers();
 
     var request = {
       query: this.state.query,
@@ -52,7 +56,7 @@ var Map = React.createClass({
           newPlaces.push(place);
         }
       }
-      this.setState({places: newPlaces});
+      this.setState({places: newPlaces, index: 0});
     }.bind(this));
 
   },
@@ -70,8 +74,8 @@ var Map = React.createClass({
     return function () {
       for (var i = 0; i < this.markers.length; i++) {
         if (this.markers[i].id === id) {
-          this.markers[i].marker.setAnimation(google.maps.Animation.BOUNCE);
           this.unbounceMarker();
+          this.markers[i].marker.setAnimation(google.maps.Animation.BOUNCE);
           this.bouncingMarker = this.markers[i].marker;
         }
       }
@@ -99,42 +103,75 @@ var Map = React.createClass({
     // this.forceUpdate();
   },
 
+  indexForwards: function () {
+    this.clearMarkers();
+    this.setState({index: (this.state.index + 1)});
+  },
+
+  indexBackwards: function () {
+    this.clearMarkers();
+    this.setState({index: (this.state.index - 1)});
+  },
+
   render: function () {
     var places = [];
     var placeList;
-
+    var displayNumber = 9;
     if (this.state.places) {
-      var i = (10 * this.state.index);
-      for (var j = 0; j < 10 && i < this.state.places.length ; j++) {
+      var i = (displayNumber * this.state.index);
+      for (var j = 0; j < displayNumber && i < this.state.places.length ; j++) {
         var place = this.state.places[i];
         this.createMarker(place);
         var content;
         if (this.props.businessForm) {
-          content = <button onClick={this.props.fillForm(place)}>Add {place.name} to Kelp!</button>;
+          content = <i onClick={this.props.fillForm(place)} className="fa fa-plus"/>;
         }
+        var address = place.formatted_address.split(', ');
+        address = address[0] + ', ' + address[1] + ', ' + address[2];
         places.push(
-          <li key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker} onClick={this.centerMap(place)}>
-            {place.name}
+          <li className="search-list-item" key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker} onClick={this.centerMap(place)}>
+            <img className="search-icon" src={place.icon}/>
+            <div className="search-list-item-info"><h2 className="search-list-name">{place.name}</h2> <h3 className="search-list-address">{address}</h3></div>
             {content}
           </li>
         );
         i++;
       }
-      placeList = <ul>{places}</ul>;
-    }
 
+      var nextButton;
+      var prevButton;
+      if (i < this.state.places.length - 1) {
+        nextButton = <button className="my-button map-search-button-next" onClick={this.indexForwards}>Next Page</button>;
+      }
+      if (this.state.index > 0) {
+        prevButton = <button className="my-button map-search-button-prev" onClick={this.indexBackwards}>Prev Page</button>;
+      }
+      placeList = (<ul className="map-search-results">
+        {places}
+        <div className="map-search-result-buttons group">
+
+          {prevButton}
+          <div className="page-index">Page {this.state.index + 1} of {Math.ceil(this.state.places.length / displayNumber)}</div>
+          {nextButton}
+        </div>
+      </ul>);
+    }
     return (
-      <div>
-        <div className="map" ref="map">
+      <div className="map-group">
+        <div className="map-wrapper">
+          <div className="map" ref="map">
+          </div>
         </div>
         <form className="map-search" onSubmit={this.searchMap}>
           <input
             type="text"
             className="map-search-input"
-            valueLink={this.linkState('query')}>
+            valueLink={this.linkState('query')}
+            placeholder="Search for businesses...">
           </input>
-          <button className="map-button"></button>
+          <button className="map-button my-button">Search</button>
         </form>
+        <h3 className="map-search-results-header">Search Results</h3>
         {placeList}
       </div>
     );

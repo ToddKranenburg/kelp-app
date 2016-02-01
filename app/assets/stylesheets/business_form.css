@@ -1,0 +1,146 @@
+.business-form {
+  position: relative;
+}
+
+.map-group {
+  position: relative;
+}
+
+.map-search-results-header {
+  position: absolute;
+  top: 5px;
+  right: 250px;
+  color: black;
+}
+
+.business-form .map {
+  width: 480px;
+  height: 420px;
+  position: fixed;
+  margin: 20px;
+}
+
+.map-wrapper {
+  width: 520px;
+  height: 440px;
+  border-right: 1px solid #ccc;
+}
+
+.business-form-header {
+  display: block;
+  font-size: 20px;
+  padding: 20px 40px;
+  text-align: left;
+  color: black;
+  border-bottom: 1px solid #ccc;
+}
+
+.map-search {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 410px;
+}
+
+.map-search-input {
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 1px 1px #ccc;
+  font-size: 12px;
+  width: 200px;
+  padding: 7px;
+  font-family: Roboto, Arial, sans-serif;
+  border-radius: 2px;
+}
+
+.map-button {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+
+.map-search-results {
+  position: absolute;
+  top: 40px;
+  left: 540px;
+  font-size: 14px;
+  width: 340px;
+  border-top: 1px solid #ccc;
+}
+
+.map-search-result-buttons {
+  margin-top: 10px;
+  position: relative;
+  min-height: 27px;
+}
+
+.page-index {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 12px;
+}
+
+.map-search-button-next {
+  margin: 10px;
+  float: right;
+}
+
+.map-search-button-prev {
+  margin: 10px;
+  float: left;
+}
+
+.map-search-results > li {
+  display: block;
+  max-width: 360px;
+  padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.search-icon {
+  width: 20px;
+  padding-right: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-list-item-info {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 60px;
+  width: 400px;
+}
+
+.search-list-item {
+  padding: 5px;
+}
+
+.search-list-item-info:hover {
+  cursor: pointer;
+}
+
+.search-list-name {
+  font-size: 14px;
+  padding: 2px;
+}
+
+.search-list-address {
+  font-size: 10px;
+}
+
+.fa-plus {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #68829E;
+}
+
+.fa-plus:hover {
+  cursor: pointer;
+}

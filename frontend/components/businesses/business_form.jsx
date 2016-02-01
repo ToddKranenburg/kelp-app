@@ -44,7 +44,8 @@ var BusinessForm = React.createClass({
       button = <button>Add {this.state.name}</button>;
     }
     return (
-      <div>
+      <div className="business-form">
+        <h2 className="business-form-header">Add a Business</h2>
         <Map fillForm={this.fillForm} businessForm={true}/>
         <form onSubmit={this.submitForm}>
           <input type="hidden" value={this.state.name} name="name"/>
@@ -54,6 +55,13 @@ var BusinessForm = React.createClass({
           {button}
         </form>
       </div>
+      // {this.props.children}
+      // <BusinessFormDetail
+      //   name={this.state.name}
+      //   lat={this.state.lat}
+      //   lng={this.state.lng}
+      //   placeId={this.state.place_id}
+      // />
     );
   }
 });

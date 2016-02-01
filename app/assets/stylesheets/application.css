@@ -33,15 +33,6 @@ html {
  font-family: "Gill Sans Extrabold", Helvetica, sans-serif;
 }
 
-.map {
-  width: 400px;
-  height: 400px;
-}
-
-.map-search-bar {
-  border: 1px solid #ccc;
-}
-
 /* ALL BUTTONS */
 .my-button {
   display: block;
