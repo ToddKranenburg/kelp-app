@@ -16,6 +16,10 @@ var ReviewsIndex = React.createClass({
           indexType={indexType}/>
       );
     }.bind(this));
+
+    if (reviews.length < 1) {
+      reviews = <div>No reviews.</div>;
+    }
     return (
         <div className="reviews-index">
           {reviews}
