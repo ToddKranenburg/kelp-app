@@ -10,6 +10,7 @@ var Business = React.createClass({
       return ({
         business: null,
         showForm: false,
+        hoveringId: -1
       });
   },
 
@@ -38,8 +39,19 @@ var Business = React.createClass({
     this.setState({showForm: !showForm});
   },
 
+  setHoveringThumb: function (index) {
+    return function () {
+      this.setState({hoveringId: index});
+    }.bind(this);
+  },
+
+  resetHoveringThumb: function () {
+    this.setState({hoveringId: -1});
+  },
+
   render: function () {
     var business = this.state.business;
+    var images = [];
     if (business) {
       var buttonContent;
       var businessContent;
@@ -61,6 +73,20 @@ var Business = React.createClass({
         );
       }
 
+      var imageUrls = business.image_urls;
+      for (var i = 0; i < 4 && i < imageUrls.length; i++) {
+        var klass = "business-thumb-image";
+        if (this.state.hoveringId === i) {
+          klass = "business-thumb-image hovering-thumb";
+        }
+        images.push(
+          <li className="business-thumb" key={i}>
+            <img className={klass} src={imageUrls[i].image_url} onMouseOver={this.setHoveringThumb(i)} onMouseLeave={this.resetHoveringThumb}/>
+          </li>
+        );
+      }
+
+
       return (
         <div className="business">
           <div className="business-header">
@@ -70,6 +96,9 @@ var Business = React.createClass({
             <div className="business-header-button" onClick={this.toggleForm}>
               {buttonContent}
             </div>
+            <ul className="business-thumbs group">
+              {images}
+            </ul>
           </div>
           {businessContent}
         </div>

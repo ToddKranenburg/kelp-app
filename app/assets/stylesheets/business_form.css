@@ -35,6 +35,28 @@
   border-bottom: 1px solid #ccc;
 }
 
+.business-form-content {
+  border-top: 1px solid #ccc;
+  margin: 20px;
+  padding-top: 20px;
+}
+
+.business-form-content-name {
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  padding-bottom: 50px;
+}
+
+.business-form-photo-upload {
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
 .map-search {
   display: block;
   position: absolute;
@@ -113,18 +135,20 @@
   top: 50%;
   transform: translateY(-50%);
   left: 60px;
-  width: 400px;
+  max-width: 400px;
 }
 
 .search-list-item {
   padding: 5px;
 }
 
-.search-list-item-info:hover {
+.search-list-name:hover {
   cursor: pointer;
 }
 
 .search-list-name {
+  display: block;
+  max-width: 200px;
   font-size: 14px;
   padding: 2px;
 }
@@ -143,4 +167,12 @@
 
 .fa-plus:hover {
   cursor: pointer;
+}
+
+.google-logo {
+  padding-top: 10px;
+  width: 100px;
+  position: absolute;
+  bottom: -25px;
+  right: 0px;
 }

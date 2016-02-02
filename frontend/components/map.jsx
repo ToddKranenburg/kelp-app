@@ -116,12 +116,14 @@ var Map = React.createClass({
   render: function () {
     var places = [];
     var placeList;
-    var displayNumber = 9;
+    var displayNumber = 8;
     if (this.state.places) {
       var i = (displayNumber * this.state.index);
       for (var j = 0; j < displayNumber && i < this.state.places.length ; j++) {
         var place = this.state.places[i];
-        this.createMarker(place);
+        if ((this.markers.length < displayNumber) && (this.markers.length < this.state.places.length)) {
+          this.createMarker(place);
+        }
         var content;
         if (this.props.businessForm) {
           content = <i onClick={this.props.fillForm(place)} className="fa fa-plus"/>;
@@ -129,9 +131,12 @@ var Map = React.createClass({
         var address = place.formatted_address.split(', ');
         address = address[0] + ', ' + address[1] + ', ' + address[2];
         places.push(
-          <li className="search-list-item" key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker} onClick={this.centerMap(place)}>
+          <li className="search-list-item" key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker}>
             <img className="search-icon" src={place.icon}/>
-            <div className="search-list-item-info"><h2 className="search-list-name">{place.name}</h2> <h3 className="search-list-address">{address}</h3></div>
+            <div className="search-list-item-info">
+              <h2 className="search-list-name"  onClick={this.centerMap(place)}>{place.name}</h2>
+              <h3 className="search-list-address">{address}</h3>
+            </div>
             {content}
           </li>
         );
@@ -154,6 +159,7 @@ var Map = React.createClass({
           <div className="page-index">Page {this.state.index + 1} of {Math.ceil(this.state.places.length / displayNumber)}</div>
           {nextButton}
         </div>
+        <img className="google-logo" src={window.googleLogoPath}></img>
       </ul>);
     }
     return (
@@ -171,7 +177,7 @@ var Map = React.createClass({
           </input>
           <button className="map-button my-button">Search</button>
         </form>
-        <h3 className="map-search-results-header">Search Results</h3>
+        <h3 className="map-search-results-header">Search Results </h3>
         {placeList}
       </div>
     );

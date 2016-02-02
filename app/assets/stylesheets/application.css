@@ -49,10 +49,11 @@ html {
   background-color: white;
   width: 900px;
   margin: auto;
-  height: 600px;
+  min-height: 600px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  margin-bottom: 50px;
 }
 
 .my-button:hover {
@@ -346,4 +347,18 @@ a:hover {
 
 .profile-review {
   max-width: 429px;
+}
+
+.profile-picture-upload-button {
+  display: block;
+  margin-left: 330px;
+  margin-bottom: 40px;
+}
+
+.preview-image {
+  max-width: 150px;
+  max-height: 150px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
 }

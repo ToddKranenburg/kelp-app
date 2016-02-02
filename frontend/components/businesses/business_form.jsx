@@ -6,6 +6,7 @@ var React = require('react'),
   Map = require('../map'),
   BusinessStore = require('../../stores/business_store'),
   BusinessApiUtil = require('../../util/business_api_util'),
+  ThumbApiUtil = require('../../util/thumb_api_util'),
   History = ReactRouter.History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
@@ -13,7 +14,7 @@ var BusinessForm = React.createClass({
   mixins: [LinkedStateMixin, History],
 
   getInitialState: function () {
-    return {name: null, lat: 0, lng: 0, place_id: ""};
+    return {name: null, lat: 0, lng: 0, place_id: "", imageFile: null, imageUrl: ""};
   },
 
   fillForm: function (place) {
@@ -33,15 +34,48 @@ var BusinessForm = React.createClass({
       }
     };
 
-    BusinessApiUtil.createBusiness(businessParams, function (id) {
-      this.history.pushState({}, "/businesses/" + id);
+    BusinessApiUtil.createBusiness(businessParams, function (businessId) {
+      var formData = new FormData();
+      formData.append("image", this.state.imageFile);
+      ThumbApiUtil.createThumb(formData, businessId, this.completeBusinessCreation(businessId));
     }.bind(this));
   },
 
+  completeBusinessCreation: function (businessId) {
+    return function () {
+      this.history.pushState({}, "/businesses/" + businessId);
+    }.bind(this);
+  },
+
+  changeFile: function (e) {
+    var reader = new FileReader();
+    var file = e.currentTarget.files[0];
+
+    reader.onloadend = function () {
+      this.setState({imageFile: file, imageUrl: reader.result});
+    }.bind(this);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({imageFile: null, imageUrl: ""});
+    }
+  },
+
   render: function () {
-    var button;
+    var formContent;
     if (this.state.name) {
-      button = <button>Add {this.state.name}</button>;
+      formContent = (
+        <div className="business-form-content">
+          <h1 className="business-form-content-name">{this.state.name}</h1>
+          <h2 className="business-form-photo-upload">Upload a photograph of {this.state.name}</h2>
+          <div className="thumb">
+            <img className="preview-image" src={this.state.imageUrl}/>
+          </div>
+          <input className="profile-picture-upload-button" type="file" onChange={this.changeFile}/>
+          <button className="my-button business-form-button">Add {this.state.name}</button>
+        </div>
+    );
     }
     return (
       <div className="business-form">
@@ -52,16 +86,9 @@ var BusinessForm = React.createClass({
           <input type="hidden" value={this.state.lat} name="lat"/>
           <input type="hidden" value={this.state.lng} name="lng"/>
           <input type="hidden" value={this.state.place_id} name="place_id"/>
-          {button}
+          {formContent}
         </form>
       </div>
-      // {this.props.children}
-      // <BusinessFormDetail
-      //   name={this.state.name}
-      //   lat={this.state.lat}
-      //   lng={this.state.lng}
-      //   placeId={this.state.place_id}
-      // />
     );
   }
 });

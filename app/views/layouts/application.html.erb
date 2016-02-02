@@ -5,7 +5,11 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <%= javascript_include_tag 'application'%>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuqdQ0Im17DX3WDWlRi_c6vMi5QWUzSFs&libraries=places"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuqdQ0Im17DX3WDWlRi_c6vMi5QWUzSFs&libraries=places">
+  </script>
+  <script type="text/javascript">
+    window.googleLogoPath = "<%=asset_path('google_logo.png')%>";
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body>

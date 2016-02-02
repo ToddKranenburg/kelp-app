@@ -9,7 +9,6 @@ var React = require('react'),
   Review = require('./components/reviews/review_show'),
   Business = require('./components/businesses/business'),
   BusinessForm = require('./components/businesses/business_form'),
-  BusinessFormDetail = require('./components/businesses/business_form_detail'),
   ReviewsIndex = require('./components/reviews/reviews_index'),
   SessionForm = require('./components/session_form'),
   SessionsApiUtil = require('./util/sessions_api_util'),
@@ -26,7 +25,6 @@ var routes = (
     <Route path="reviews/:id" component={Review} onEnter={_ensureLoggedIn}/>
     <Route path="businesses/:id" component={Business} onEnter={_ensureLoggedIn}/>
     <Route path="business-form" component={BusinessForm} onEnter={_ensureLoggedIn}>
-      <Route path="detail" component={BusinessFormDetail} onEnter={_ensureLoggedIn}/>
     </Route>
     <Route path="users/:username" component={Profile} onEnter={_ensureLoggedIn}/>
   </Route>
