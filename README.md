@@ -17,3 +17,14 @@ Take a swim around the site [here][heroku].
 
 For more information on the app, check out the [docs][documents].
 [documents]: ./docs/readme.md
+
+
+## Things to run on clone:
+
+- [ ] bundle install
+- [ ] npm install
+- [ ] webpack --watch
+- [ ] bundle exec figaro install (and add keys)
+- [ ] bundle exec rake db:create
+- [ ] bundle exec rake db:migrate
+- [ ] bundle exec rake db:seed

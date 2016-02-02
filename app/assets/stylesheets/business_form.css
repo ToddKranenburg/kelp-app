@@ -115,11 +115,7 @@
 }
 
 .map-search-results > li {
-  display: block;
-  max-width: 360px;
-  padding: 20px 20px 20px 20px;
-  border-bottom: 1px solid #ccc;
-  position: relative;
+
 }
 
 .search-icon {
@@ -131,24 +127,26 @@
 }
 
 .search-list-item-info {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 60px;
-  max-width: 400px;
+  max-width: 270px;
+  padding-left: 30px;
 }
 
 .search-list-item {
-  padding: 5px;
+  display: block;
+  max-width: 360px;
+  padding: 10px 10px 10px 0px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
 }
 
-.search-list-name:hover {
+.search-list-item:hover {
   cursor: pointer;
+  background: #eee;
 }
 
 .search-list-name {
   display: block;
-  max-width: 200px;
+  max-width: 400px;
   font-size: 14px;
   padding: 2px;
 }
@@ -167,6 +165,7 @@
 
 .fa-plus:hover {
   cursor: pointer;
+  color: black;
 }
 
 .google-logo {

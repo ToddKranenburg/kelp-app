@@ -49,6 +49,10 @@ var Business = React.createClass({
     this.setState({hoveringId: -1});
   },
 
+  submitForm: function () {
+    this.setState({showForm: false});
+  },
+
   render: function () {
     var business = this.state.business;
     var images = [];
@@ -60,7 +64,7 @@ var Business = React.createClass({
         buttonContent = "Show Reviews";
         businessContent = (
           <div className="business-content business-review-form">
-            <ReviewForm business={business}/>
+            <ReviewForm business={business} submitForm={this.submitForm}/>
           </div>
         );
       } else {

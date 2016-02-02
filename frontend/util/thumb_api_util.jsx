@@ -8,8 +8,9 @@ var ThumbApiUtil = {
       dataType: 'json',
       data: thumbParams,
       success: function (thumb) {
-
-        success();
+        if (success) {
+          success();
+        }
       },
       error: function (data) {
         console.log('oh noooo! from createThumb');

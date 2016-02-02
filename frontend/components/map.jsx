@@ -56,6 +56,9 @@ var Map = React.createClass({
           newPlaces.push(place);
         }
       }
+      if (newPlaces[0]) {
+        this.centerMap(newPlaces[0])();
+      }
       this.setState({places: newPlaces, index: 0});
     }.bind(this));
 
@@ -131,10 +134,10 @@ var Map = React.createClass({
         var address = place.formatted_address.split(', ');
         address = address[0] + ', ' + address[1] + ', ' + address[2];
         places.push(
-          <li className="search-list-item" key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker}>
+          <li className="search-list-item" key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker} onClick={this.centerMap(place)}>
             <img className="search-icon" src={place.icon}/>
             <div className="search-list-item-info">
-              <h2 className="search-list-name"  onClick={this.centerMap(place)}>{place.name}</h2>
+              <h2 className="search-list-name">{place.name}</h2>
               <h3 className="search-list-address">{address}</h3>
             </div>
             {content}

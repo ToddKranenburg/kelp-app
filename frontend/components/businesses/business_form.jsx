@@ -36,8 +36,13 @@ var BusinessForm = React.createClass({
 
     BusinessApiUtil.createBusiness(businessParams, function (businessId) {
       var formData = new FormData();
-      formData.append("image", this.state.imageFile);
-      ThumbApiUtil.createThumb(formData, businessId, this.completeBusinessCreation(businessId));
+      if (this.state.imageFile) {
+        formData.append("image", this.state.imageFile);
+        ThumbApiUtil.createThumb(formData, businessId, this.completeBusinessCreation(businessId));
+      } else {
+        this.completeBusinessCreation(businessId)();
+      }
+
     }.bind(this));
   },
 

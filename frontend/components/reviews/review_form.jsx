@@ -18,6 +18,9 @@ var ReviewForm = React.createClass({
   },
 
   submitForm: function () {
+    if (this.props.submitForm) {
+      this.props.submitForm();
+    }
     var businessId;
     var business = this.props.business;
 
