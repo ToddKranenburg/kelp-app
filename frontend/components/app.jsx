@@ -17,7 +17,7 @@ var App = React.createClass({
     return (
       <div>
         <Header/>
-        <div className="main">
+        <div className="main" id="main">
           {this.props.children}
         </div>
       </div>

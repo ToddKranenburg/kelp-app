@@ -348,17 +348,3 @@ a:hover {
 .profile-review {
   max-width: 429px;
 }
-
-.profile-picture-upload-button {
-  display: block;
-  margin-left: 330px;
-  margin-bottom: 40px;
-}
-
-.preview-image {
-  max-width: 150px;
-  max-height: 150px;
-  display: block;
-  margin: auto;
-  margin-bottom: 20px;
-}
