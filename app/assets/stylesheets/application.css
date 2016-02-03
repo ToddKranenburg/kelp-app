@@ -94,6 +94,7 @@ a:hover {
   color: #fff;
   text-align: center;
   font-size: 36px;
+  font-weight: bold;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -347,4 +348,12 @@ a:hover {
 
 .profile-review {
   max-width: 429px;
+}
+
+.blur {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
 }

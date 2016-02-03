@@ -11,7 +11,7 @@
 
 .business-content {
   margin: auto;
-  padding: 90px 20px;
+  padding: 110px 20px;
 }
 
 .business-review-form {
@@ -21,24 +21,23 @@
 .business-header-name {
   display: block;
   position: absolute;
-  top: 20px;
-  left: 50px;
+  top: 30px;
+  left: 20px;
   font-size: 36px;
   font-weight: bold;
   font: helvetica;
+  max-width: 450px;
 }
 
 .business-header-button {
-  display: block;
-  margin: auto;
-  top: 20px;
+  top: 28px;
   position: absolute;
-  right: -40px;
+  right: 55px;
   transform: translateX(-50%) translateY(5%);
 
 
   display: block;
-  padding: 10px 50px;
+  padding: 10px 30px;
   font-size: 14px;
   font-weight: bold;
   background-color: #68829E;
@@ -48,44 +47,104 @@
   border: 1px solid #ccc;
 }
 
+.business-header-button-image {
+  top: 34px;
+  position: absolute;
+  right: -30px;
+  transform: translateX(-50%) translateY(5%);
+
+
+  display: block;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: white;
+  margin: auto;
+  color: #68829E;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.fa-camera {
+  padding-right: 5px;
+}
+
 .business-header-button:hover {
   background-color: #505160;
   cursor: pointer;
 }
 
-.business-thumb-image {
-  /*width: 180px;*/
-  min-height: 180px;
-  min-width: 140px;
-  max-height: 220px;
-  max-width: 200px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.business-thumb-image:hover {
+.business-header-button-image:hover {
+  background-color: #eee;
   cursor: pointer;
 }
 
-.hovering-thumb {
-  min-height: 230px;
-  min-width: 180px;
-  max-height: 270px;
-  max-width: 220px;
-  z-index: 1;
+
+
+.default-image:hover {
+  cursor: pointer;
+}
+
+
+.business-thumbs {
+  right: 20px;
+  width: 500px;
+  height: 25px;
+  top: 92%;
+  transform: translateY(-66.666%);
+  position: absolute;
 }
 
 .business-thumb {
   float: left;
+  width: 185px;
+  height: 20px;
   display: block;
   position: relative;
-  box-sizing: content-box;
-  padding: 2px;
 }
 
-.business-thumbs {
-  right: 20px;
-  top: 100%;
-  transform: translateY(-66.666%);
+.business-thumb-image {
+  /*width: 180px;*/
+  min-height: 160px;
+  min-width: 120px;
+  max-height: 200px;
+  max-width: 180px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transform: translateX(-50%) translateY(-50%);
   position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.hovering-thumb {
+  min-height: 210px;
+  min-width: 160px;
+  max-height: 250px;
+  max-width: 200px;
+  z-index: 1;
+}
+.button-star {
+  padding-right: 10px;
+  font-size: 16px;
+}
+
+.new-image-icon {
+  position: absolute;
+}
+
+.single-business-map > .map{
+  width: 280px;
+  height: 300px;
+  border-radius: 5px;
+}
+.single-business-map {
+  width: 280px;
+  height: 300px;
+  position: absolute;
+  bottom: 0px;
+  transform: translateY(33.3%);
+  left: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }

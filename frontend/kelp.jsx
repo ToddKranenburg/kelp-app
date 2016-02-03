@@ -45,7 +45,6 @@ function _ensureLoggedIn(nextState, replace, callback) {
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
   var rootEl = document.getElementById('root');
 

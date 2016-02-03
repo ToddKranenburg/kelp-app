@@ -32,6 +32,12 @@ var ImageModal = React.createClass({
   },
 
   render: function() {
+    if (this.props.modalIsOpen) {
+      $('#root').addClass("blur");
+    } else if ($('#root').hasClass("blur")) {
+      $('#root').removeClass("blur");
+    }
+
     var customStyles = {
       overlay : {
         position          : 'fixed',
@@ -39,7 +45,7 @@ var ImageModal = React.createClass({
         left              : 0,
         right             : 0,
         bottom            : 0,
-        backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+        backgroundColor   : 'rgba(255, 255, 255, 0.1)'
       },
       content: {
         top: '50%',
@@ -54,6 +60,11 @@ var ImageModal = React.createClass({
       }
     };
 
+    var imageUploadButton;
+    if (this.state.imageFile) {
+      imageUploadButton = <button className="image-upload-button my-button">Upload image</button>;
+    }
+
     //add a submit form prop
     return (
       <div>
@@ -61,12 +72,11 @@ var ImageModal = React.createClass({
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.props.closeModal}
           style={customStyles} >
-          <form onSubmit={this.submitForm}>
-            <input className="profile-picture-upload-button" type="file" onChange={this.changeFile}/>
-            <div className="thumb">
-              <img className="preview-image" src={this.state.imageUrl}/>
-              <button>Upload image</button>
-            </div>
+          <form className="image-upload-form" onSubmit={this.submitForm}>
+            <div className="image-upload-input-button">Choose an image</div>
+            <img className="preview-image" src={this.state.imageUrl}/>
+            <input className="image-upload-input" type="file" onChange={this.changeFile}/>
+            {imageUploadButton}
           </form>
         </Modal>
       </div>

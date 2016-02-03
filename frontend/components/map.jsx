@@ -37,7 +37,8 @@ var Map = React.createClass({
   },
 
 //change this for specific cities!
-  searchMap: function () {
+  searchMap: function (e) {
+    e.preventDefault();
     this.clearMarkers();
 
     var request = {
@@ -129,7 +130,7 @@ var Map = React.createClass({
         }
         var content;
         if (this.props.businessForm) {
-          content = <i onClick={this.props.fillForm(place)} className="fa fa-plus"/>;
+          content = <i onClick={this.props.fillForm(place)} className="fa fa-plus map-index-icon"/>;
         }
         var address = place.formatted_address.split(', ');
         address = address[0] + ', ' + address[1] + ', ' + address[2];
