@@ -26,10 +26,12 @@
 
 .profile-info > .fa-cog {
   position: absolute;
-  transform: translateY(-70%) translateX(-120%);
-  top: 115px;
+  left: 25px;
+  top: 25px;
+  color: #eee;
 }
 
 .profile-info .fa-cog:hover {
   cursor: pointer;
+  font-size: 20px;
 }

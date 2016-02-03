@@ -61,21 +61,6 @@ var ApiUtil = {
     });
   },
 
-  fetchUserById: function (userId) {
-    $.ajax({
-      url: "/api/users/" + userId,
-      method: "GET",
-      dataType: "json",
-      data: {user_id: userId},
-      success: function (user) {
-        UserActions.receiveSingleUser(user);
-      },
-      error: function (data) {
-        console.log('oh noooo! from fetchUserById');
-      }
-    });
-  },
-
   fetchBusinessById: function (businessId) {
     $.ajax({
       url: "/api/businesses/" + businessId,

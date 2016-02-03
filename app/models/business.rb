@@ -4,6 +4,9 @@ class Business < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :thumbs, dependent: :destroy
 
+  include PgSearch
+  multisearchable :against => [:name], using: [:trigram]
+
   def average_rating
     #fill this out later!
   end

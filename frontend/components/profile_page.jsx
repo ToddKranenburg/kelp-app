@@ -4,6 +4,7 @@ var React = require('react'),
   ImageModal = require('./image_modal'),
   ReactRouter = require('react-router'),
   Link = ReactRouter.Link,
+  OtherUserStore = require('../stores/other_user_store'),
   CurrentUserStore = require('../stores/current_user_store');
 
 var ProfilePage = React.createClass({
@@ -12,20 +13,28 @@ var ProfilePage = React.createClass({
   },
 
   componentDidMount: function () {
-    this.currentUserStoreListener = CurrentUserStore.addListener(this.forceUpdate.bind(this));
+    if (this.props.isCurrentUser) {
+      this.currentUserStoreListener = CurrentUserStore.addListener(this.forceUpdate.bind(this));
+    } else {
+      this.otherUserStoreListener = OtherUserStore.addListener(this.forceUpdate.bind(this));
+      UsersApiUtil.fetchUserById(this.props.userId);
+    }
   },
 
   componentWillUnmount: function () {
-    this.currentUserStoreListener.remove();
+    if (this.props.isCurrentUser) {
+      this.currentUserStoreListener.remove();
+    } else {
+      this.otherUserStoreListener.remove();
+    }
   },
 
   uploadImage: function (e, imageFile) {
     e.preventDefault();
-
+    var currentUserId = CurrentUserStore.getCurrentUser().id;
     var formData = new FormData();
     formData.append("profile_picture", imageFile);
-    var currentUserId = CurrentUserStore.getCurrentUser().id;
-    UsersApiUtil.updateUser(formData, currentUserId, function () {
+    UsersApiUtil.updateCurrentUser(formData, currentUserId, function () {
       ApiUtil.fetchReviewsByUserId(currentUserId);
       return;
     });
@@ -41,20 +50,28 @@ var ProfilePage = React.createClass({
   },
 
   render: function() {
-    var currentUser = CurrentUserStore.getCurrentUser();
-    var imageUrl = currentUser.image_url;
-
+    var user, cog, modal, addNewBusinessButton;
+    if (this.props.isCurrentUser) {
+      user = CurrentUserStore.getCurrentUser();
+      cog =   <i className="fa fa-cog" onClick={this.toggleModal}></i>;
+      modal = <ImageModal
+        modalIsOpen={this.state.modalIsOpen}
+        closeModal={this.closeModal}
+        submitForm={this.uploadImage}
+        />;
+      addNewBusinessButton = <Link className="my-button" to='/business-form'>Add a New Business to Kelp</Link>;
+    } else {
+      user = OtherUserStore.getOtherUser();
+    }
+    // var currentUser =
+    var imageUrl = user.image_url;
     return (
       <div className="profile-info group">
         <img className="profile-picture" src={imageUrl}/>
-        <h2 className="profile-username">{currentUser.username}</h2>
-        <i className="fa fa-cog" onClick={this.toggleModal}></i>
-        <ImageModal
-          modalIsOpen={this.state.modalIsOpen}
-          closeModal={this.closeModal}
-          submitForm={this.uploadImage}
-        />
-        <Link className="my-button" to='/business-form'>Add a New Business to Kelp</Link>
+        <h2 className="profile-username">{user.username}</h2>
+        {cog}
+        {modal}
+        {addNewBusinessButton}
       </div>
     );
   }

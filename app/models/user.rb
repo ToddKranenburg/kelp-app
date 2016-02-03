@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_attached_file :profile_picture, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: 'default_picture.png'
   validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\Z/
 
+  include PgSearch
+  multisearchable :against => [:username], using: [:trigram]
+
   after_initialize :ensure_session_token
   validates :username, uniqueness: true, presence: true
   validates :session_token, uniqueness: true

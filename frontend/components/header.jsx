@@ -1,6 +1,7 @@
 var React = require('react'),
   SessionsApiUtil = require('../util/sessions_api_util'),
   ReactRouter = require('react-router'),
+  Search = require('./search'),
   Link = ReactRouter.Link,
   History = require('react-router').History,
   CurrentUserStore = require('../stores/current_user_store');
@@ -28,6 +29,7 @@ var Header = React.createClass({
     if (CurrentUserStore.isLoggedIn()) {
       headerContent = (
         <div>
+          <Search/>
           <div className="header-buttons">
             <Link className="my-button" to={'/'}>{CurrentUserStore.getCurrentUser().username}</Link>
             <div className="my-button" onClick={this.logout}>Sign Out</div>

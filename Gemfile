@@ -19,6 +19,10 @@ gem 'figaro'
 
 gem 'paperclip'
 
+gem 'pg_search'
+
+gem 'kaminari'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

@@ -299,12 +299,12 @@ a:hover {
   border-bottom: 1px solid #ccc;
 }
 
-.business-link {
+.review-index-link {
   text-decoration: none;
   color: #68829E;
 }
 
-.business-link:hover {
+.review-index-link:hover {
   color: black;
 }
 

@@ -11,16 +11,31 @@ var React = require('react'),
 var Profile = React.createClass({
   getInitialState: function () {
     return ({
-      reviews: null,
-      user: CurrentUserStore.getCurrentUser()
+      reviews: null
     });
   },
 
   componentDidMount: function () {
     this.reviewStoreListener =
       ReviewStore.addListener(this.reviewsChanged);
+  },
 
-    ApiUtil.fetchReviewsByUserId(this.state.user.id);
+  getUser: function () {
+    var userId;
+    if (this.props.params.id) {
+      userId = this.props.params.id;
+      this.isCurrentUser = false;
+    } else {
+      userId = CurrentUserStore.getCurrentUser().id;
+      this.isCurrentUser = true;
+    }
+    this.userId = userId;
+
+    ApiUtil.fetchReviewsByUserId(userId);
+  },
+
+  componentWillReceiveProps: function () {
+    this.userId = null;
   },
 
   componentWillUnmount: function () {
@@ -48,23 +63,19 @@ var Profile = React.createClass({
     }
   },
 
-  uploadImage: function (e) {
-    e.preventDefault();
-
-  },
-
-  render: function(){
-    if (this.state.reviews && this.state.user) {
+  render: function() {
+    if (this.state.reviews && this.userId) {
       return (
         <div className="profile group">
           <div className="profile-reviews">
-            <Tab tabClickHandler={this.tabClicked} userId={this.state.user.id}/>
+            <Tab tabClickHandler={this.tabClicked} userId={this.userId} isCurrentUser={this.isCurrentUser}/>
             <ReviewsIndex reviews={this.state.reviews} indexType="profile"/>
           </div>
-          <ProfilePage/>
+          <ProfilePage isCurrentUser={this.isCurrentUser} userId={this.userId} />
         </div>
       );
     } else {
+      this.getUser();
       return <div></div>;
     }
   }

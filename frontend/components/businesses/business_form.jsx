@@ -7,8 +7,8 @@ var React = require('react'),
   BusinessStore = require('../../stores/business_store'),
   BusinessApiUtil = require('../../util/business_api_util'),
   ThumbApiUtil = require('../../util/thumb_api_util'),
-  History = ReactRouter.History;
-var LinkedStateMixin = require('react-addons-linked-state-mixin');
+  History = ReactRouter.History,
+  LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var BusinessForm = React.createClass({
   mixins: [LinkedStateMixin, History],

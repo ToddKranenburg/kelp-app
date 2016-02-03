@@ -27,7 +27,7 @@ var routes = (
     <Route path="businesses/:id" component={Business} onEnter={_ensureLoggedIn}/>
     <Route path="business-form" component={BusinessForm} onEnter={_ensureLoggedIn}>
     </Route>
-    <Route path="users/:username" component={Profile} onEnter={_ensureLoggedIn}/>
+    <Route path="users/:id" component={Profile} onEnter={_ensureLoggedIn}/>
   </Route>
 );
 
