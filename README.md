@@ -25,6 +25,13 @@ For more information on the app, check out the [docs][documents].
 - [ ] npm install
 - [ ] webpack --watch
 - [ ] bundle exec figaro install (and add keys)
-- [ ] bundle exec rake db:create
-- [ ] bundle exec rake db:migrate
-- [ ] bundle exec rake db:seed
+- [ ] bundle exec rake db:reset
+
+## Things to push to heroku:
+
+- [ ] heroku login
+- [ ] rm ~/.ssh/id_*  (only on a/A computers)
+- [ ] heroku keys:add  (only on a/A computers)
+- [ ] heroku login
+- [ ] git remote add heroku https://git.heroku.com/kelp-app.git
+- [ ] heroku run bundle exec rake db:reset (resets full database! Don't do this if you want to save anything.)
