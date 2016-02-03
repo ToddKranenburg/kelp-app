@@ -29,10 +29,11 @@
 .business-form-header {
   display: block;
   font-size: 20px;
-  padding: 20px 40px;
+  padding: 20px 20px;
   text-align: left;
   color: black;
   border-bottom: 1px solid #ccc;
+  font-weight: bold;
 }
 
 .business-form-content {
@@ -83,11 +84,15 @@
 
 .map-search-results {
   position: absolute;
-  top: 40px;
+  top: 0px;
   left: 540px;
   font-size: 14px;
   width: 340px;
   border-top: 1px solid #ccc;
+}
+
+.no-results {
+  padding-top: 10px;
 }
 
 .map-search-result-buttons {
@@ -157,6 +162,7 @@
 
 .fa-plus {
   color: #68829E;
+  font-size: 16px;
 }
 
 .map-index-icon {
@@ -169,6 +175,7 @@
 .fa-plus:hover {
   cursor: pointer;
   color: black;
+  font-size: 20px;
 }
 
 .google-logo {

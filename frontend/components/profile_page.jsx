@@ -1,7 +1,7 @@
 var React = require('react'),
   UsersApiUtil = require('../util/users_api_util'),
   ApiUtil = require('../util/api_util'),
-  ImageModal = require('./image_modal'),
+  ImageModal = require('./image_form_modal'),
   ReactRouter = require('react-router'),
   Link = ReactRouter.Link,
   OtherUserStore = require('../stores/other_user_store'),

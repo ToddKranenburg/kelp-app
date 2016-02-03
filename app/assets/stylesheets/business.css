@@ -4,7 +4,7 @@
 }
 
 .business-header {
-  height: 350px;
+  height: 330px;
   border-bottom: 1px solid #ccc;
   position: relative;
 }
@@ -21,19 +21,33 @@
 .business-header-name {
   display: block;
   position: absolute;
-  top: 30px;
-  left: 20px;
   font-size: 36px;
   font-weight: bold;
   font: helvetica;
   max-width: 450px;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.average-rating {
+  padding-top: 5px;
+  font-size: 22px;
+  color: #68829E;
+}
+
+.business-header-nav {
+  position: absolute;
+  top: 65px;
+  transform: translateY(-50%);
+  width: 100%;
 }
 
 .business-header-button {
-  top: 28px;
+  top: 50%;
   position: absolute;
-  right: 55px;
-  transform: translateX(-50%) translateY(5%);
+  right: 50px;
+  transform: translateX(-50%) translateY(-50%);
 
 
   display: block;
@@ -48,10 +62,10 @@
 }
 
 .business-header-button-image {
-  top: 34px;
+  top: 50%;
   position: absolute;
-  right: -30px;
-  transform: translateX(-50%) translateY(5%);
+  right: -35px;
+  transform: translateX(-50%) translateY(-50%);
 
 
   display: block;
@@ -87,8 +101,8 @@
 
 
 .business-thumbs {
-  right: 20px;
-  width: 500px;
+  right: -125px;
+  width: 700px;
   height: 25px;
   top: 92%;
   transform: translateY(-66.666%);

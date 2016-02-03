@@ -2,10 +2,13 @@ var React = require('react'),
   ApiUtil = require('../../util/api_util'),
   ThumbApiUtil = require('../../util/thumb_api_util'),
   ReviewForm = require('../reviews/review_form'),
-  ImageModal = require('../image_modal'),
+  ImageModal = require('../image_form_modal'),
+  ReviewFormModal = require('../review_form_modal'),
   BusinessMap = require('../business_map'),
   ReviewsIndex = require('../reviews/reviews_index'),
   BusinessStore = require('../../stores/business_store'),
+  Modal = require('react-modal'),
+  ModalConstants = require('../../constants/modal_constants'),
   ReviewStore = require('../../stores/review_store');
 
 var Business = React.createClass({
@@ -14,7 +17,8 @@ var Business = React.createClass({
         business: null,
         showForm: false,
         hoveringId: -1,
-        modalIsOpen: false
+        imageModalIsOpen: false,
+        formModalIsOpen: false
       });
   },
 
@@ -27,6 +31,20 @@ var Business = React.createClass({
   componentWillUnmount: function () {
     this.businessStoreListener.remove();
     this.reviewStoreListener.remove();
+  },
+
+  componentWillReceiveProps: function () {
+    this.setState({
+      business: null,
+      showForm: false,
+      hoveringId: -1,
+      imageModalIsOpen: false,
+      formModalIsOpen: false
+    });
+  },
+
+  getBusiness: function () {
+    ApiUtil.fetchBusinessById(this.props.params.id);
   },
 
   businessChanged: function () {
@@ -42,9 +60,12 @@ var Business = React.createClass({
     ApiUtil.fetchBusinessById(this.props.params.id);
   },
 
-  toggleForm: function () {
-    var showForm = this.state.showForm;
-    this.setState({showForm: !showForm});
+  toggleFormModal: function () {
+    this.setState({formModalIsOpen: !this.state.formModalIsOpen});
+  },
+
+  toggleImageModal: function () {
+    this.setState({imageModalIsOpen: !this.state.imageModalIsOpen});
   },
 
   setHoveringThumb: function (index) {
@@ -57,16 +78,12 @@ var Business = React.createClass({
     this.setState({hoveringId: -1});
   },
 
-  submitForm: function () {
-    this.setState({showForm: false});
+  closeFormModal: function () {
+    this.setState({formModalIsOpen: false});
   },
 
-  toggleModal: function () {
-    this.setState({modalIsOpen: !this.state.modalIsOpen});
-  },
-
-  closeModal: function () {
-    this.setState({modalIsOpen: false});
+  closeImageModal: function () {
+    this.setState({imageModalIsOpen: false});
   },
 
   uploadImage: function (e, imageFile) {
@@ -77,97 +94,118 @@ var Business = React.createClass({
     var businessId = this.state.business.id;
     var thumbsChanged = this.thumbsChanged;
     ThumbApiUtil.createThumb(formData, businessId, thumbsChanged);
-    this.closeModal();
+    this.closeImageModal();
+  },
+
+  images: function (imageUrls) {
+    var images = [];
+    var klass;
+    for (var i = 0; i < 3 && i < imageUrls.length; i++) {
+      klass = "business-thumb-image";
+      if (this.state.hoveringId === i) {
+        klass = "business-thumb-image hovering-thumb";
+      }
+
+      images.push(
+        <li className="business-thumb" key={i}>
+          <div className="group image-wrapper">
+            <img className={klass} src={imageUrls[i].image_url} onMouseOver={this.setHoveringThumb(i)} onMouseLeave={this.resetHoveringThumb}/>
+          </div>
+        </li>
+      );
+    }
+
+    if (images.length === 0) {
+      images.push(
+        <li className="business-thumb" key={0}>
+            <img
+              className="business-thumb-image default-image"
+              src={window.defaultBusinessPhoto}
+              onClick={this.toggleModal}
+            />
+        </li>
+      );
+    }
+
+    return images;
+  },
+
+  stars: function (business) {
+    var stars = [];
+
+    var numFullStars = Math.floor(business.average_rating / 2);
+    for (var j = 0; j < numFullStars; j++) {
+      stars.push(<i className="fa fa-star" key={j}/>);
+    }
+    if (business.average_rating % 2) {
+      stars.push(<i className="fa fa-star-half-o" key={numFullStars}/>);
+    }
+
+    return stars;
   },
 
   render: function () {
     var business = this.state.business;
-    var images = [];
-    if (business) {
-      var buttonContent;
-      var businessContent;
+    if (!business) {
+      this.getBusiness();
+      return <div></div>;
+    }
 
-      if (this.state.showForm) {
-        buttonContent = "Show Reviews";
-        businessContent = (
-          <div className="business-content business-review-form">
-            <ReviewForm business={business} submitForm={this.submitForm}/>
-          </div>
-        );
-      } else {
-        buttonContent = "Write A Review";
-        // businessContent = <div className="business-content"> Reviews Here </div>;
-        businessContent = (
-          <div className="business-content">
+    var buttonContent = "Write A Review";
+    var businessContent = (
+      <div className="business-content">
+        <ReviewsIndex reviews={business.reviews} indexType="business"/>
+      </div>
+    );
 
-            <ReviewsIndex reviews={business.reviews} indexType="business"/>
-          </div>
-        );
-      }
-      var klass;
-      var imageUrls = business.image_urls;
-      for (var i = 0; i < 3 && i < imageUrls.length; i++) {
-        klass = "business-thumb-image";
-        if (this.state.hoveringId === i) {
-          klass = "business-thumb-image hovering-thumb";
-        }
+    var images = this.images(business.image_urls);
 
-        images.push(
-          <li className="business-thumb" key={i}>
-            <div className="group image-wrapper">
-              <img className={klass} src={imageUrls[i].image_url} onMouseOver={this.setHoveringThumb(i)} onMouseLeave={this.resetHoveringThumb}/>
-            </div>
-          </li>
-        );
-      }
+    var position = {
+      lat: business.lat, lng: business.lng
+    };
 
-      if (images.length === 0) {
-        images.push(
-          <li className="business-thumb">
-              <img
-                className="business-thumb-image default-image"
-                src={window.defaultBusinessPhoto}
-                onClick={this.toggleModal}
-              />
-          </li>
-        );
-      }
+    var stars = this.stars(business);
 
-      var position = {
-        lat: business.lat, lng: business.lng
-      };
-
-      return (
-        <div className="business">
-          <div className="business-header">
+    return (
+      <div className="business">
+        <div className="business-header">
+          <nav className="business-header-nav">
             <h1 className="business-header-name">
               {business.name}
+              <div className = "average-rating">
+                {stars}
+              </div>
             </h1>
-            <div className="business-header-button" onClick={this.toggleForm}>
-              <i className="fa fa-star button-star"/>
-              {buttonContent}
-            </div>
-
-            <div className="business-header-button-image" onClick={this.toggleModal}>
+            <div className="business-header-button-image" onClick={this.toggleImageModal}>
               <i className="fa fa-camera"></i>
               Add a Photo
             </div>
-            <ImageModal
-              modalIsOpen={this.state.modalIsOpen}
-              closeModal={this.closeModal}
-              submitForm={this.uploadImage}
-            />
-            <BusinessMap position={position}/>
-            <ul className="business-thumbs group">
-              {images}
-            </ul>
-          </div>
-          {businessContent}
+            <div className="business-header-button" onClick={this.toggleFormModal}>
+              <i className="fa fa-star button-star"/>
+              {buttonContent}
+            </div>
+          </nav>
+          <BusinessMap position={position}/>
+          <ul className="business-thumbs group">
+            {images}
+          </ul>
         </div>
-      );
-    } else {
-      return <div></div>;
-    }
+        {businessContent}
+        <ImageModal
+          modalIsOpen={this.state.imageModalIsOpen}
+          closeModal={this.closeImageModal}
+          submitForm={this.uploadImage}
+          otherModalIsOpen={this.state.formModalIsOpen}
+        />
+        <ReviewFormModal
+          modalIsOpen={this.state.formModalIsOpen}
+          closeModal={this.closeFormModal}
+          business={business}
+          submitForm={this.closeFormModal}
+          otherModalIsOpen={this.state.imageModalIsOpen}
+        />
+      </div>
+    );
   }
 });
 

@@ -3,6 +3,7 @@ json.name business.name
 json.lat business.lat
 json.lng business.lng
 json.place_id business.place_id
+json.average_rating business.average_rating
 
 json.reviews business.reviews do |review|
   json.partial! '/api/reviews/review', review: review

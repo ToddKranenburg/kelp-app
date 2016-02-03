@@ -41,27 +41,32 @@ var Map = React.createClass({
     e.preventDefault();
     this.clearMarkers();
 
-    var request = {
-      query: this.state.query,
-    };
-    if (this.state.bounds) {
-      request.bounds = this.state.bounds;
+    if (this.state.query) {
+      var request = {
+        query: this.state.query,
+      };
+      if (this.state.bounds) {
+        request.bounds = this.state.bounds;
+      }
+
+      var newPlaces = [];
+      var service = new google.maps.places.PlacesService(this.map);
+      service.textSearch(request, function (results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            newPlaces.push(place);
+          }
+        }
+        if (newPlaces[0]) {
+          this.centerMap(newPlaces[0])();
+        }
+        this.setState({places: newPlaces, index: 0});
+      }.bind(this));
+    } else {
+      this.setState({places: null, index: 0});
     }
 
-    var newPlaces = [];
-    var service = new google.maps.places.PlacesService(this.map);
-    service.textSearch(request, function (results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          var place = results[i];
-          newPlaces.push(place);
-        }
-      }
-      if (newPlaces[0]) {
-        this.centerMap(newPlaces[0])();
-      }
-      this.setState({places: newPlaces, index: 0});
-    }.bind(this));
 
   },
 
@@ -130,12 +135,17 @@ var Map = React.createClass({
         }
         var content;
         if (this.props.businessForm) {
-          content = <i onClick={this.props.fillForm(place)} className="fa fa-plus map-index-icon"/>;
+          content = <i onClick={this.props.addBusiness(place)} className="fa fa-plus map-index-icon"/>;
         }
         var address = place.formatted_address.split(', ');
         address = address[0] + ', ' + address[1] + ', ' + address[2];
         places.push(
-          <li className="search-list-item" key={place.id} onMouseEnter={this.bounceMarker(place.id)} onMouseLeave={this.unbounceMarker} onClick={this.centerMap(place)}>
+          <li
+            className="search-list-item" key={place.id}
+            onMouseEnter={this.bounceMarker(place.id)}
+            onMouseLeave={this.unbounceMarker}
+            onClick={this.centerMap(place)}
+          >
             <img className="search-icon" src={place.icon}/>
             <div className="search-list-item-info">
               <h2 className="search-list-name">{place.name}</h2>
@@ -158,13 +168,21 @@ var Map = React.createClass({
       placeList = (<ul className="map-search-results">
         {places}
         <div className="map-search-result-buttons group">
-
           {prevButton}
           <div className="page-index">Page {this.state.index + 1} of {Math.ceil(this.state.places.length / displayNumber)}</div>
           {nextButton}
         </div>
         <img className="google-logo" src={window.googleLogoPath}></img>
       </ul>);
+    } else {
+      placeList = (
+        <div>
+          <div className="map-search-results no-results">
+          No search results.
+        </div>
+
+        </div>
+      );
     }
     return (
       <div className="map-group">
@@ -181,7 +199,6 @@ var Map = React.createClass({
           </input>
           <button className="map-button my-button">Search</button>
         </form>
-        <h3 className="map-search-results-header">Search Results </h3>
         {placeList}
       </div>
     );

@@ -243,42 +243,6 @@ a:hover {
 
 /* REVIEWS-FORM */
 
-.unstarred {
-  background-color: white;
-}
-
-.review-form {
-  padding: 15px 20px 15px 20px;
-  margin: 15px 20px 15px 0px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #68829E;
-  opacity: 0.75;
-  box-sizing: content-box;
-}
-
-.review-form-body {
-  font-size: 14px;
-  box-sizing: border-box;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  padding: 10px 5px;
-  margin: 10px 0px;
-  width: 100%;
-}
-
-.expanded {
-  height: 100px;
-}
-.review-form-body:focus + .review-form-button {
-  display: block;
-}
-
-.review-form-button {
-  display: none;
-}
-
 
 /* REVIEWS-INDEX */
 

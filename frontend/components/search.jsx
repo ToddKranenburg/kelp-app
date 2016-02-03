@@ -1,8 +1,12 @@
 var SearchApiUtil = require('../util/search_api_util'),
   SearchResultStore = require('../stores/search_result_store'),
+  History = require('react-router').History,
+  LinkedStateMixin = require('react-addons-linked-state-mixin'),
   React = require('react');
 
 var Search = React.createClass({
+  mixins: [History, LinkedStateMixin],
+
   getInitialState: function () {
     return {query: "", page: 1};
   },
@@ -19,15 +23,33 @@ var Search = React.createClass({
     this.forceUpdate();
   },
 
-  pgSearch: function (e) {
-    var query = e.target.value;
+  pgSearch: function () {
+    SearchApiUtil.search(this.state.query);
+    this.setState({page: 1});
+  },
 
-    SearchApiUtil.search(query);
-    this.setState({page: 1, query: query});
+  clickResult: function (item) {
+    var url;
+    if (item._type === "Business") {
+      url = "businesses/" + item.id;
+    } else if (item._type === "User") {
+      url = "users/" + item.id;
+    }
+
+    return (function () {
+      this.history.pushState({}, url);
+      this.searched = true;
+      this.setState({page: 1, query: ""});
+    }.bind(this));
   },
 
   render: function () {
     var results = SearchResultStore.getSearchResults().results || [];
+    if (this.searched) {
+      results = [];
+      this.searched = false;
+      SearchApiUtil.search("");
+    }
     var searchResultItems = [];
     for (var i = 0; i < results.length; i++) {
       item = results[i];
@@ -57,7 +79,7 @@ var Search = React.createClass({
       }
 
       searchResultItems.push(
-        <li className="search-bar-results-item group" key={i}>
+        <li className="search-bar-results-item group" key={i} onClick={this.clickResult(item)}>
           {content}
         </li>
       );
@@ -70,7 +92,7 @@ var Search = React.createClass({
 
     return (
       <div className="search-bar">
-        <input type="text" placeholder="Search for users or businesses" onKeyUp={this.pgSearch} className="search-bar-input"></input>
+        <input type="text" placeholder="Search for users or businesses" onKeyUp={this.pgSearch} className="search-bar-input" valueLink={this.linkState('query')}></input>
         {searchResult}
       </div>
     );

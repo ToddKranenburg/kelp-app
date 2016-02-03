@@ -8,6 +8,16 @@ class Business < ActiveRecord::Base
   multisearchable :against => [:name], using: [:trigram]
 
   def average_rating
-    #fill this out later!
+    total_rating = 0
+    all_reviews = self.reviews
+    all_reviews.each do |review|
+      total_rating += review.rating * 2
+    end
+    if (all_reviews.length > 0)
+      average_rating = (total_rating / all_reviews.length).ceil
+    else
+      average_rating = 0
+    end
+    average_rating
   end
 end

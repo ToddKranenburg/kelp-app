@@ -1,8 +1,9 @@
 var React = require('react');
 var Modal = require('react-modal');
+var ModalConstants = require('../constants/modal_constants');
 
 
-var ImageModal = React.createClass({
+var ImageFormModal = React.createClass({
   getInitialState: function () {
     return ({imageFile: null, imageUrl: ""});
   },
@@ -34,31 +35,9 @@ var ImageModal = React.createClass({
   render: function() {
     if (this.props.modalIsOpen) {
       $('#root').addClass("blur");
-    } else if ($('#root').hasClass("blur")) {
+    } else if (!this.props.otherModalIsOpen && $('#root').hasClass("blur")) {
       $('#root').removeClass("blur");
     }
-
-    var customStyles = {
-      overlay : {
-        position          : 'fixed',
-        top               : 0,
-        left              : 0,
-        right             : 0,
-        bottom            : 0,
-        backgroundColor   : 'rgba(255, 255, 255, 0.1)'
-      },
-      content: {
-        top: '50%',
-        left: '50%',
-        marginRight: '-50%',
-        right: 'auto',
-        bottom: 'auto',
-        border: '1px solid #ccc',
-        transform: 'translate(-50%, -50%)',
-        background: '#fff',
-        padding: '20px'
-      }
-    };
 
     var imageUploadButton;
     if (this.state.imageFile) {
@@ -71,7 +50,7 @@ var ImageModal = React.createClass({
         <Modal
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.props.closeModal}
-          style={customStyles} >
+          style={ModalConstants.customStyles} >
           <form className="image-upload-form" onSubmit={this.submitForm}>
             <div className="image-upload-input-button">Choose an image</div>
             <img className="preview-image" src={this.state.imageUrl}/>
@@ -85,4 +64,4 @@ var ImageModal = React.createClass({
   }
 });
 
-module.exports = ImageModal;
+module.exports = ImageFormModal;

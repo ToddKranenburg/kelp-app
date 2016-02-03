@@ -66,10 +66,6 @@ var ReviewForm = React.createClass({
     this.setState({hoverRating: null});
   },
 
-  expandForm: function () {
-    this.setState({formBodyKlass: "review-form-body expanded"});
-  },
-
   render: function () {
     var stars = [];
     var starKlass;
@@ -97,16 +93,24 @@ var ReviewForm = React.createClass({
 
     return (
       <div className="review-form">
-        {stars}
-        <form onSubmit={this.submitForm}>
-          <textarea
-            className={this.state.formBodyKlass}
-            placeholder="Write a new review..."
-            onFocus={this.expandForm}
-            valueLink={this.linkState("body")}
-          />
-        <button className={buttonKlass}>Post</button>
-        </form>
+        <h2 className="review-form-header">
+          <div className="review-form-header-name">
+            {this.props.business.name}
+          </div>
+          <div className="review-form-stars">
+            {stars}
+          </div>
+        </h2>
+        <div className="review-form-content">
+          <form onSubmit={this.submitForm}>
+            <textarea
+              className="review-form-body"
+              placeholder={"Write a new review for " + this.props.business.name + "..."}
+              valueLink={this.linkState("body")}
+              />
+            <button className="my-button">Post</button>
+          </form>
+        </div>
       </div>
     );
   }
