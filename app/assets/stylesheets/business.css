@@ -162,3 +162,12 @@
   border-radius: 5px;
   border: 1px solid #ccc;
 }
+
+.cover-map {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  top: 0px;
+}

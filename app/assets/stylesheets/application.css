@@ -45,6 +45,30 @@ html {
   border: 1px solid #ccc;
 }
 
+.facebook-button {
+  position: relative;
+}
+
+.facebook-button {
+  padding-top: 10px;
+  width: 175px;
+}
+
+.overlay {
+  width: 175px;
+  height: 38px;
+  background: transparent;
+  position: absolute;
+  top: 248px;
+  left: 137px;
+}
+
+.overlay:hover {
+  background: #ccc;
+  opacity: .2;
+}
+
+
 .main {
   background-color: white;
   width: 900px;
@@ -178,7 +202,7 @@ a:hover {
 
 .user-link {
   font-size: 12px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 }
 

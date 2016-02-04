@@ -33,7 +33,10 @@ var UserForm = React.createClass({
             placeholder="Password"/>
 
             <button className="my-button">Sign up for Kelp</button>
-
+            <a className="facebook-link" href="/auth/facebook">
+              <img className="facebook-button" src={window.facebookLogoPath}/>
+              <div className="overlay"></div>
+            </a>
             <div className="user-link">
               <Link to={'/login'}>Already have an account? Sign in here.</Link>
             </div>

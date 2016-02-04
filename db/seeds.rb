@@ -12,9 +12,9 @@ Business.destroy_all
 Thumb.destroy_all
 
 
-nemo = User.new(username: "Nemo", password: "Password")
-dori = User.new(username: "Dori", password: "password")
-flo = User.new(username: "Flo", password: "password")
+nemo = User.new(username: "Nemo", password: "Password", profile_picture: File.open("#{Rails.root}/app/assets/images/nemo.jpg"))
+dori = User.new(username: "Dori", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/dori.jpg"))
+flo = User.new(username: "Flo", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/flo.jpg"))
 nemo.save!
 dori.save!
 flo.save!

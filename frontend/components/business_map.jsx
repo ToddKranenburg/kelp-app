@@ -29,6 +29,8 @@ var BusinessMap = React.createClass({
       <div className="single-business-map">
         <div className="map" ref="map">
         </div>
+        <div className="cover-map">
+        </div>
       </div>
     );
   }
