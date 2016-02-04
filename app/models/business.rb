@@ -6,6 +6,7 @@ class Business < ActiveRecord::Base
 
   include PgSearch
   multisearchable :against => [:name], using: [:trigram]
+  pg_search_scope :business_search, against: [:name], using: [:trigram]
 
   def average_rating
     total_rating = 0

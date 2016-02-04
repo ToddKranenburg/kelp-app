@@ -23,6 +23,8 @@ gem 'pg_search'
 
 gem 'kaminari'
 
+gem 'omniauth-facebook'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

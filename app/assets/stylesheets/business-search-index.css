@@ -3,36 +3,69 @@
   padding-right: 20px;
   padding-left: 20px;
   width: 33.333%;
+  float: left;
 }
 
 .business-index-item {
-  height: 90px;
+  height: 110px;
   border-bottom: 1px solid #ccc;
   position: relative;
 }
 
 .business-index-item-image {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border: 1px solid #ccc;
   border-radius: 5px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 20px;
+  left: 0px;
 }
 
 .business-index-item-info {
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 100px;
 }
 
 
-.business-index-item-info h2 {
+.business-index-link {
   padding-bottom: 5px;
+  font-size: 16px;
+  display: block;
 }
+
+.business-index-link-name {
+  color: #68829E;
+  text-decoration: none;
+}
+
+
+.business-index-link-name:hover {
+  color: black;
+}
+
 
 .business-index-item-stars {
   padding-bottom: 5px;
+}
+
+.business-search-results-header {
+  border-bottom: 1px solid #ccc;
+  padding: 40px 0px 40px 20px;
+  font-size: 24px;
+}
+
+.search-results-map {
+  width: 62%;
+  position: absolute;
+  right: 15px;
+  top: 120px;
+}
+
+.search-results-map > .map{
+  width: 100%;
+  height: 450px;
+  border: 1px solid #ccc;
 }

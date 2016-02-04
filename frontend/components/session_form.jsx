@@ -33,7 +33,7 @@ var SessionForm = React.createClass({
             placeholder="Password"/>
 
           <button className="my-button">Sign in to Kelp</button>
-
+          <a href="/auth/facebook">LOG IN WITH FACEBOOK</a>
             <div className="user-link">
               <Link to={'/sign-up'}>Don't have an account? Sign up here.</Link>
             </div>

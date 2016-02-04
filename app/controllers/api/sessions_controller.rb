@@ -15,8 +15,34 @@ class Api::SessionsController < ApplicationController
       render json: ["The username/password you entered was incorrect"], status: 401
     else
       login!(@user)
-      render "/api/users/show"
+      render "api/users/show"
     end
+  end
+
+  def omniauth_facebook
+    provider = auth_hash[:provider]
+    uid = auth_hash[:uid]
+    @user = User.find_by(provider: provider, uid: uid)
+
+    if @user.nil?
+      @user = User.new(
+        username: auth_hash[:info][:name],
+        password: SecureRandom.urlsafe_base64,
+        profile_picture: auth_hash[:info][:image],
+        uid: uid,
+        provider: provider)
+        debugger
+      if (@user.save)
+        login!(@user)
+        redirect_to root_url + '#/'
+      else
+        render json: ["Facebook sign in failed"], status: 401
+      end
+    else
+      login!(@user)
+      redirect_to root_url + '#/'
+    end
+
   end
 
   def destroy
@@ -26,5 +52,8 @@ class Api::SessionsController < ApplicationController
     render json: ["You logged out!"]
   end
 
-
+  private
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 end

@@ -23,7 +23,7 @@ var BusinessIndexItem = React.createClass({
     var imageUrl = business.image_urls[0] || {image_url: window.defaultBusinessPhoto};
     imageUrl = imageUrl.image_url;
     var businessLink = (
-      <Link className="review-index-link" to={'/businesses/' + business.id}>{business.name}</Link>
+      <div className="business-index-link">{this.props.number}. <Link className="business-index-link-name" to={'/businesses/' + business.id}>{business.name}</Link></div>
     );
     return (
       <div className="business-index-item">

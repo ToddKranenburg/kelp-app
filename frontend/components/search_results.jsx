@@ -3,6 +3,7 @@
 var React = require('react'),
   SearchApiUtil = require('../util/search_api_util'),
   BusinessSearchResultStore = require('../stores/business_search_result_store'),
+  SearchResultsMap = require('./search_results_map'),
   BusinessesIndex = require('./businesses/business_index');
 
 var SearchResults = React.createClass({
@@ -30,7 +31,13 @@ var SearchResults = React.createClass({
   render: function () {
     if (this.state.businesses) {
       return (
-        <BusinessesIndex businesses={this.state.businesses}/>
+        <div className="group">
+          <div className="business-search-results-header">
+            <h2>Showing results for '{this.props.location.state}'...</h2>
+          </div>
+          <BusinessesIndex businesses={this.state.businesses}/>
+          <SearchResultsMap businesses={this.state.businesses}/>
+        </div>
       );
     } else {
       return (

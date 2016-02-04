@@ -13,6 +13,7 @@ var Search = React.createClass({
 
   componentDidMount: function () {
     this.resultStoreListener = SearchResultStore.addListener(this._onChange);
+    this.addEnterListener();
   },
 
   componentWillUnmount: function () {
@@ -53,6 +54,21 @@ var Search = React.createClass({
     // SearchApiUtil.searchReviews(this.state.query);
   },
 
+  addEnterListener: function () {
+    if (this.enterListenerAdded) {
+      return;
+    }
+
+    var searchReviews = this.searchReviews;
+    $(".search-bar-input").keypress(function (e) {
+      if (e.which === 13) {
+        searchReviews();
+      }
+    });
+
+    this.enterListenerAdded = true;
+  },
+
   render: function () {
     var results;
     if (this.clicked) {
@@ -75,7 +91,7 @@ var Search = React.createClass({
       }
 
       searchResultItems.push(
-        <li className="search-bar-results-item group" key={i} onClick={this.clickResult(item)}>
+        <li className="search-bar-results-item group" key={i}>
           <img className="search-image" src={imageUrl}/>
           <div className="search-content">
             <div className="search-words">
@@ -93,9 +109,17 @@ var Search = React.createClass({
 
     return (
       <div className="search-bar">
-        <input type="text" placeholder="Search for users or businesses" onKeyUp={this.pgSearch} className="search-bar-input" valueLink={this.linkState('query')}></input>
+        <input
+          type="text"
+          placeholder="Search for users or businesses"
+          onKeyUp={this.pgSearch}
+          onFocus={this.addEnterListener}
+          onBlur={this.removeEnterListener}
+          className="search-bar-input"
+          valueLink={this.linkState('query')}>
+        </input>
         {searchResult}
-        <button className="my-button" onClick={this.searchReviews}>Search</button>
+        <button className="my-search-button" onClick={this.searchReviews}><i className="fa fa-search"></i></button>
       </div>
     );
   }

@@ -36,8 +36,8 @@
   transform: translateY(-35%);
 }
 
-.review-form-content {
-
+.review-form-stars:hover {
+  cursor: pointer;
 }
 
 .review-form-body {
