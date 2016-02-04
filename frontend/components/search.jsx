@@ -26,6 +26,7 @@ var Search = React.createClass({
   pgSearch: function () {
     SearchApiUtil.search(this.state.query);
     this.setState({page: 1});
+    this.clicked = false;
   },
 
   clickResult: function (item) {
@@ -37,18 +38,27 @@ var Search = React.createClass({
     }
 
     return (function () {
+      this.clicked = true;
       this.history.pushState({}, url);
-      this.searched = true;
-      this.setState({page: 1, query: ""});
+      this.forceUpdate();
     }.bind(this));
   },
 
+  searchReviews: function () {
+    var query = this.state.query;
+    this.clicked = true;
+    this.setState({query: ""}, function () {
+      this.history.pushState(query, 'search-results');
+    }.bind(this));
+    // SearchApiUtil.searchReviews(this.state.query);
+  },
+
   render: function () {
-    var results = SearchResultStore.getSearchResults().results || [];
-    if (this.searched) {
+    var results;
+    if (this.clicked) {
       results = [];
-      this.searched = false;
-      SearchApiUtil.search("");
+    } else {
+      results = SearchResultStore.getSearchResults().results || [];
     }
     var searchResultItems = [];
     for (var i = 0; i < results.length; i++) {
@@ -57,30 +67,21 @@ var Search = React.createClass({
       var imageUrl;
       if (item._type === "Business") {
         imageUrl = item.image_urls[0] || {image_url: window.defaultBusinessPhoto};
-        content =
-          <div>
-            <img className="search-image" src={imageUrl.image_url}/>
-            <div className="search-content">
-              <div className="search-words">
-                {item.name}
-              </div>
-            </div>
-          </div>;
+        imageUrl = imageUrl.image_url;
+        content = item.name;
       } else if (item._type === "User") {
-        content =
-          <div>
-            <img className="search-image" src={item.image_url}/>
-              <div className="search-content">
-                <div className="search-words">
-                  {item.username}
-                </div>
-              </div>
-          </div>;
+        imageUrl = item.image_url;
+        content = item.username;
       }
 
       searchResultItems.push(
         <li className="search-bar-results-item group" key={i} onClick={this.clickResult(item)}>
-          {content}
+          <img className="search-image" src={imageUrl}/>
+          <div className="search-content">
+            <div className="search-words">
+              {content}
+            </div>
+          </div>
         </li>
       );
     }
@@ -94,6 +95,7 @@ var Search = React.createClass({
       <div className="search-bar">
         <input type="text" placeholder="Search for users or businesses" onKeyUp={this.pgSearch} className="search-bar-input" valueLink={this.linkState('query')}></input>
         {searchResult}
+        <button className="my-button" onClick={this.searchReviews}>Search</button>
       </div>
     );
   }

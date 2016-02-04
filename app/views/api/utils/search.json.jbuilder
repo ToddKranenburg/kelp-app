@@ -6,7 +6,7 @@ json.results do
 
     if result.class == User
       json.partial!("api/users/user", user: result)
-    else
+    elsif result.class == Business
       json.partial!("api/businesses/business", business: result)
     end
 

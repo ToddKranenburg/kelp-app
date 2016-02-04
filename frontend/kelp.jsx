@@ -15,6 +15,7 @@ var React = require('react'),
   SessionsApiUtil = require('./util/sessions_api_util'),
   CurrentUserStore = require('./stores/current_user_store'),
   UserForm = require('./components/user_form'),
+  SearchResults = require('./components/search_results'),
   browserHistory = ReactRouter.browserHistory;
 
 
@@ -28,6 +29,7 @@ var routes = (
     <Route path="business-form" component={BusinessForm} onEnter={_ensureLoggedIn}>
     </Route>
     <Route path="users/:id" component={Profile} onEnter={_ensureLoggedIn}/>
+    <Route path="search-results" component={SearchResults} onEnter={_ensureLoggedIn}/>
   </Route>
 );
 

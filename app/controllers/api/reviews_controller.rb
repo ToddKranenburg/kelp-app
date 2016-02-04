@@ -11,7 +11,6 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
-
     @review = current_user.reviews.create(review_params)
   end
 
