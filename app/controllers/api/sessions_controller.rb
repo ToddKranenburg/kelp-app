@@ -23,15 +23,14 @@ class Api::SessionsController < ApplicationController
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
     @user = User.find_by(provider: provider, uid: uid)
-
     if @user.nil?
+      profile_picture = auth_hash[:info][:image]
       @user = User.new(
         username: auth_hash[:info][:name],
         password: SecureRandom.urlsafe_base64,
-        profile_picture: auth_hash[:info][:image],
+        profile_picture: profile_picture,
         uid: uid,
         provider: provider)
-        debugger
       if (@user.save)
         login!(@user)
         redirect_to root_url + '#/'

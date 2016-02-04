@@ -32,6 +32,6 @@ For more information on the app, check out the [docs][documents].
 - [ ] heroku login
 - [ ] rm ~/.ssh/id_*  (only on a/A computers)
 - [ ] heroku keys:add  (only on a/A computers)
-- [ ] heroku login
 - [ ] git remote add heroku https://git.heroku.com/kelp-app.git
+- [ ] git push heroku master
 - [ ] heroku run bundle exec rake db:reset (resets full database! Don't do this if you want to save anything.)
