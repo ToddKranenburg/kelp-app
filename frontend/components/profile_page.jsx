@@ -7,6 +7,7 @@ var React = require('react'),
   Link = ReactRouter.Link,
   OtherUserStore = require('../stores/other_user_store'),
   SchoolStore = require('../stores/school_store'),
+  CurrentUserSchoolStore = require('../stores/current_user_school_store'),
   School = require('./school'),
   CurrentUserStore = require('../stores/current_user_store');
 
@@ -23,6 +24,7 @@ var ProfilePage = React.createClass({
       UsersApiUtil.fetchUserById(this.props.userId);
     }
     this.schoolStoreListener = SchoolStore.addListener(this.forceUpdate.bind(this));
+    this.currentUserSchoolStoreListener = CurrentUserSchoolStore.addListener(this.currentUserSchoolChanged);
     SchoolApiUtil.fetchSchoolMembersByOwnerId(this.props.userId);
   },
 
@@ -32,7 +34,9 @@ var ProfilePage = React.createClass({
     } else {
       this.otherUserStoreListener.remove();
     }
+
     this.schoolStoreListener.remove();
+    this.currentUserSchoolStoreListener.remove();
   },
 
   componentWillReceiveProps: function (newProps) {
@@ -40,6 +44,10 @@ var ProfilePage = React.createClass({
     if (!this.props.isCurrentUser) {
       UsersApiUtil.fetchUserById(this.props.userId);
     }
+  },
+
+  currentUserSchoolChanged: function () {
+    this.forceUpdate();
   },
 
   uploadImage: function (e, imageFile) {
@@ -64,7 +72,9 @@ var ProfilePage = React.createClass({
 
   addSchoolMember: function () {
     var schoolMemberId = OtherUserStore.getOtherUser().id;
-    SchoolApiUtil.createSchoolMembership(schoolMemberId);
+    SchoolApiUtil.createSchoolMembership(schoolMemberId, function () {
+      SchoolApiUtil.fetchCurrentUserSchoolMembersById(CurrentUserStore.getCurrentUser().id);
+    });
   },
 
   render: function() {
@@ -80,7 +90,9 @@ var ProfilePage = React.createClass({
       addNewBusinessButton = <Link className="my-button" to='/business-form'>Add a New Business to Kelp</Link>;
     } else {
       user = OtherUserStore.getOtherUser();
-      addSchoolMemberButton = <button onClick={this.addSchoolMember} className="my-button">Add {user.username} to your school</button>;
+      if (!CurrentUserSchoolStore.hasMember(user.id)) {
+        addSchoolMemberButton = <button onClick={this.addSchoolMember} className="my-button">Add {user.username} to your school</button>;
+      }
     }
 
     var imageUrl = user.image_url;

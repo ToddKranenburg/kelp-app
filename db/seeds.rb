@@ -10,6 +10,7 @@ User.destroy_all
 Review.destroy_all
 Business.destroy_all
 Thumb.destroy_all
+SchoolMembership.destroy_all
 
 
 nemo = User.new(username: "Nemo", password: "Password", profile_picture: File.open("#{Rails.root}/app/assets/images/nemo.jpg"))
@@ -41,6 +42,26 @@ cpzoo.save!
 nywatertaxi.save!
 sushi.save!
 
+ferry.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/ferry.jpg"))
+ferry.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/ferry_2.jpg"))
+pier.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/pier.jpg"))
+pier.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/pier_2.jpg"))
+cafe.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/cafe.jpg"))
+cafe.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/cafe_2.jpg"))
+lake.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/lake.jpg"))
+lake.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/lake_2.jpg"))
+manhattan_aquariums.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/manhattan_aquariums.jpg"))
+manhattan_aquariums.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/manhattan_aquariums_2.jpg"))
+new_york_aquarium.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/new_york_aquarium.jpg"))
+new_york_aquarium.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/new_york_aquarium_2.jpg"))
+cpzoo.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/cpzoo.jpg"))
+cpzoo.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/cpzoo_2.jpg"))
+nywatertaxi.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/nywatertaxi.jpg"))
+nywatertaxi.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/nywatertaxi_2.jpg"))
+sushi.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/sushi.jpg"))
+sushi.thumbs.create!(image: File.open("#{Rails.root}/app/assets/images/sushi_2.jpg"))
+
+
 
 intro_body = "Welcome to Kelp, a Yelp clone for fish! Users of Kelp can review their favorite aquatic (or terrestrial) businesses, add new businesses to the site, and upload photos for businesses and profiles. Take a swim around the site and enjoy."
 pier_body = "What a lovely pier! Despite the fact that it juts into a major through-way in the hudson river in a rather unfortunate way, Pier 46 is worth swimming past. The grass is always so green. It almost makes me wish I had lungs!"
@@ -53,6 +74,11 @@ ferry.reviews.create!(body: ferry_body, rating: 2, author_id: flo.id)
 cafe.reviews.create!(body: river_cafe, rating: 4, author_id: nemo.id)
 lake.reviews.create!(body: lake_body, rating: 5, author_id: flo.id)
 intro.reviews.create!(body: intro_body, rating: 5, author_id: nemo.id)
+
+SchoolMembership.create!(school_owner_id: nemo.id, school_member_id: flo.id)
+SchoolMembership.create!(school_owner_id: nemo.id, school_member_id: dori.id)
+SchoolMembership.create!(school_owner_id: flo.id, school_member_id: nemo.id)
+SchoolMembership.create!(school_owner_id: dori.id, school_member_id: flo.id)
 
 
 # business_ids = [];

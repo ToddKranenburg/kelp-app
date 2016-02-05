@@ -1,4 +1,5 @@
 var UsersApiUtil = require('./users_api_util'),
+  OtherUserStore = require('../stores/other_user_store'),
   SchoolActions = require('../actions/school_actions');
 
 var SchoolApiUtil = {
@@ -37,7 +38,27 @@ var SchoolApiUtil = {
         console.log('oh noooo! from fetchSchoolMembers');
       }
     });
+  },
+
+  fetchCurrentUserSchoolMembersById: function (schoolOwnerId, success) {
+    $.ajax({
+      url: "/api/users",
+      method: "GET",
+      dataType: 'json',
+      data: {owner_id: schoolOwnerId},
+      success: function (schoolMembers) {
+        SchoolActions.receiveAllCurrentUserSchoolMembers(schoolMembers);
+        if (success) {
+          success();
+        }
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchcurrentuserSchoolMembers');
+      }
+    });
   }
+
+
 };
 
 module.exports = SchoolApiUtil;

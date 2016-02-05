@@ -3,6 +3,7 @@ var React = require('react'),
   ReviewForm = require('../components/reviews/review_form'),
   CurrentUserStore = require('../stores/current_user_store'),
   ApiUtil = require('../util/api_util'),
+  SchoolApiUtil = require('../util/school_api_util'),
   TabConstants = require('../constants/tab_constants'),
   Tab = require('../components/tab'),
   ProfilePage = require('../components/profile_page'),
@@ -18,13 +19,19 @@ var Profile = React.createClass({
   componentDidMount: function () {
     this.reviewStoreListener =
       ReviewStore.addListener(this.reviewsChanged);
+    SchoolApiUtil.fetchCurrentUserSchoolMembersById(CurrentUserStore.getCurrentUser().id);
+
   },
 
   getUser: function () {
     var userId;
     if (this.props.params.id) {
       userId = this.props.params.id;
-      this.isCurrentUser = false;
+      if (CurrentUserStore.getCurrentUser().id === parseInt(userId)) {
+        this.isCurrentUser = true;
+      } else {
+        this.isCurrentUser = false;
+      }
     } else {
       userId = CurrentUserStore.getCurrentUser().id;
       this.isCurrentUser = true;

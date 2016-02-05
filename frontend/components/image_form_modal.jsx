@@ -1,6 +1,7 @@
 var React = require('react');
 var Modal = require('react-modal');
-var ModalConstants = require('../constants/modal_constants');
+var ModalConstants = require('../constants/modal_constants'),
+  Dropzone = require('react-dropzone');
 
 
 var ImageFormModal = React.createClass({
@@ -8,9 +9,9 @@ var ImageFormModal = React.createClass({
     return ({imageFile: null, imageUrl: ""});
   },
 
-  changeFile: function (e) {
+  dragAndDrop: function (files) {
     var reader = new FileReader();
-    var file = e.currentTarget.files[0];
+    var file = files[0];
 
     reader.onloadend = function () {
       this.setState({imageFile: file, imageUrl: reader.result});
@@ -40,8 +41,11 @@ var ImageFormModal = React.createClass({
     }
 
     var imageUploadButton;
+    var droppableKlass = "droppable";
+
     if (this.state.imageFile) {
       imageUploadButton = <button className="image-upload-button my-button">Upload image</button>;
+      droppableKlass = "droppable filled_in";
     }
 
     //add a submit form prop
@@ -52,9 +56,12 @@ var ImageFormModal = React.createClass({
           onRequestClose={this.props.closeModal}
           style={ModalConstants.customStyles} >
           <form className="image-upload-form" onSubmit={this.submitForm}>
-            <div className="image-upload-input-button">Choose an image</div>
-            <img className="preview-image" src={this.state.imageUrl}/>
-            <input className="image-upload-input" type="file" onChange={this.changeFile}/>
+            <div className={droppableKlass}>
+              <Dropzone onDrop={this.dragAndDrop} multiple={false}>
+                <h3 className="droppable-words">Drag and drop or click here to add a photo</h3>
+                <img className="preview-image" src={this.state.imageUrl}/>
+              </Dropzone>
+            </div>
             {imageUploadButton}
           </form>
         </Modal>

@@ -1,6 +1,7 @@
 var React = require('react');
 var Header = require('./header');
 var CurrentUserStore = require('../stores/current_user_store');
+var SchoolApiUtil = require('../util/school_api_util');
 var Map = require('./map');
 
 var App = React.createClass({

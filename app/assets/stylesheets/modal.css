@@ -1,15 +1,33 @@
 /* MODALS */
 
 .image-upload-form {
-  min-width: 200px;
-  min-height: 90px;
+
   position: relative;
   padding-bottom: 20px;
 }
 
+.droppable {
+  min-width: 150px;
+  min-height: 150px;
+  position: relative;
+  margin: 20px 40px;
+  padding: 20px;
+}
+
+.droppable-words {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+
+  transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  line-height: 20px;
+}
+
 .image-upload-input {
   position: absolute;
-  bottom: 49px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: 110px;
@@ -19,7 +37,7 @@
 
 .image-upload-input-button {
   position: absolute;
-  bottom: 49px;
+  top: -20px;
   left: 50%;
   height: 15px;
   transform: translateX(-50%);
@@ -32,18 +50,17 @@
 }
 
 .preview-image {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 195px;
+  max-height: 195px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50%);
   display: block;
   margin: auto;
-  margin-bottom: 60px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .image-upload-button {
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
+
 }
