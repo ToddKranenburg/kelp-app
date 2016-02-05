@@ -1,7 +1,6 @@
 /* MODALS */
 
 .image-upload-form {
-
   position: relative;
   padding-bottom: 20px;
 }
@@ -10,8 +9,7 @@
   min-width: 150px;
   min-height: 150px;
   position: relative;
-  margin: 20px 40px;
-  padding: 20px;
+  margin: 40px 60px;
 }
 
 .droppable-words {
@@ -61,6 +59,13 @@
   margin: auto;
 }
 
-.image-upload-button {
+.image-upload-form .fa-times {
+  position: absolute;
+  top: -50px;
+  right: -7px;
+  font-size: 20px;
+}
 
+.image-upload-form .fa-times:hover {
+  cursor: pointer;
 }

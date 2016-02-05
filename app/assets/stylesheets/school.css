@@ -1,7 +1,9 @@
 .school {
   margin-top: 20px;
   padding-top: 10px;
+  padding-bottom: 20px;
   border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .school-header {

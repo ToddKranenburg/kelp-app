@@ -1,16 +1,18 @@
 var React = require('react');
 var Modal = require('react-modal');
 var ModalConstants = require('../constants/modal_constants'),
-  ThumbApiUtil = require('../util/thumb_api_util');
+  ThumbApiUtil = require('../util/thumb_api_util'),
+  Dropzone = require('react-dropzone');
+
 
 var BusinessFormModal = React.createClass({
   getInitialState: function () {
     return ({imageFile: null, imageUrl: ""});
   },
 
-  changeFile: function (e) {
+  changeFile: function (files) {
     var reader = new FileReader();
-    var file = e.currentTarget.files[0];
+    var file = files[0];
 
     reader.onloadend = function () {
       this.setState({imageFile: file, imageUrl: reader.result});
@@ -60,9 +62,13 @@ var BusinessFormModal = React.createClass({
         onRequestClose={this.closeModal}
         style={ModalConstants.customStyles}>
         <form className="image-upload-form" onSubmit={this.submitForm}>
-          <div className="image-upload-input-button">Choose an image</div>
-          <img className="preview-image" src={this.state.imageUrl}/>
-          <input className="image-upload-input" type="file" onChange={this.changeFile}/>
+          <i className="fa fa-times" onClick={this.closeModal}></i>
+          <div className="droppable">
+            <Dropzone onDrop={this.dragAndDrop} multiple={false}>
+              <h3 className="droppable-words">Drag and drop or click here to add a photo</h3>
+              <img className="preview-image" src={this.state.imageUrl}/>
+            </Dropzone>
+          </div>
           <button className="image-upload-button my-button" onClick={this.submitForm}>
             Add to Kelp
           </button>

@@ -13,8 +13,8 @@ class Api::UsersController < ApplicationController
     if (@user.save)
       login!(@user)
       business = Business.find_by_name("A Business");
-      intro_body = "Welcome to Kelp, a Yelp clone for fish! Users of Kelp can review their favorite aquatic (or terrestrial) businesses, add new businesses to the site, and upload photos for businesses and profiles. Take a swim around the site and enjoy."
-      @user.reviews.create!(body: intro_body, business_id: business.id)
+      intro_body = "Welcome to Kelp, a Yelp clone for fish! Users of Kelp can review and post photos of their favorite aquatic (or terrestrial) businesses, add new businesses to the site, and add other users to their \"school\" to stay up to date with their friends' favorite spots. Take a swim around the site and enjoy."
+      @user.reviews.create!(body: intro_body, business_id: business.id, rating: 5)
       render :show
     else
       render json: @user.errors.full_messages

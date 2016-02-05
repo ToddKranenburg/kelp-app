@@ -56,6 +56,7 @@ var ImageFormModal = React.createClass({
           onRequestClose={this.props.closeModal}
           style={ModalConstants.customStyles} >
           <form className="image-upload-form" onSubmit={this.submitForm}>
+            <i className="fa fa-times" onClick={this.props.closeModal}></i>
             <div className={droppableKlass}>
               <Dropzone onDrop={this.dragAndDrop} multiple={false}>
                 <h3 className="droppable-words">Drag and drop or click here to add a photo</h3>

@@ -14,11 +14,16 @@ SchoolMembership.destroy_all
 
 
 nemo = User.new(username: "Nemo", password: "Password", profile_picture: File.open("#{Rails.root}/app/assets/images/nemo.jpg"))
-dori = User.new(username: "Dori", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/dori.jpg"))
+dory = User.new(username: "Dory", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/dory.jpg"))
 flo = User.new(username: "Flo", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/flo.jpg"))
+bruce = User.new(username: "Bruce", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/bruce.jpg"))
+marlin = User.new(username: "Marlin", password: "password", profile_picture:  File.open("#{Rails.root}/app/assets/images/marlin.jpg"))
+
 nemo.save!
-dori.save!
+dory.save!
 flo.save!
+bruce.save!
+marlin.save!
 
 intro = Business.new(name: "A Business", place_id: "ChIJAy6jC-ZwokRy1FScZTNJcA", lat: 40.7341636, lng: -74.01114410000002)
 pier = Business.new(name: "Pier 46", place_id: "ChIJAy6jC-xZwokRy1FScZTNJcA", lat: 40.7341636, lng: -74.01114410000002)
@@ -67,18 +72,34 @@ intro_body = "Welcome to Kelp, a Yelp clone for fish! Users of Kelp can review t
 pier_body = "What a lovely pier! Despite the fact that it juts into a major through-way in the hudson river in a rather unfortunate way, Pier 46 is worth swimming past. The grass is always so green. It almost makes me wish I had lungs!"
 ferry_body = "What a monstrous, destructive piece of machinery. The East River Ferry has no regard for its gilled-neighbors - it regularly plows through feeding waters and scares away all the delicious plankton! I can't speak to what an experience aboard the ferry is like considering they do not offer passage to fish, but from what I have seen it is as awful atop the ship as it is below."
 river_cafe = "Despite its name, this restaurant is, in fact, NOT A RIVER nor is it even in a river. It is close to one, however. And in the evening when the sun is low over New York harbor, there is no place I would rather be than the River Cafe, granted that I have come equipped with adequate water."
-lake_body = "I spent a weekend in the lake in Central Park and LOVED IT. Everyone there is so friendly and shiny. It was a wonderful place to spend a few days and I would gladly go back. Check out the moss forest in the northern quadrant if you make it up there!"
+lake_body = "I spent a weekend in the lake in Central Park and LOVED IT. Everyone there is so friendly and shiny. It was a wonderful place to spend a few days and I would gladly go back. Check out the algae forest in the northern quadrant if you make it up there!"
+lake_shark = "too small..."
+pier_shark = "flopped onto it once... it was ok..."
+ferry_shark = "so loud..."
+river_shark = "service was poor... tried to eat a waiter..."
+pier_dory = "Great spot! Found a little patch of algae to nap in under the pier. Best nap of my life."
+sushi_shark = "YUMMM!!"
+sushi_flo = "Watch out - this place is full of sharks!"
+sushi_dory = "I was pleasantly surprised by the food here. Was told by a friend to \"never ever\" go here. Not sure why! The food was delicious - why have I never tried sushi before!? I've really been missing out. Will definitely be returning here."
 
-pier.reviews.create!(body: pier_body, rating: 4, author_id: dori.id)
+pier.reviews.create!(body: pier_body, rating: 4, author_id: flo.id)
+pier.reviews.create!(body: pier_dory, rating: 5, author_id: dory.id)
 ferry.reviews.create!(body: ferry_body, rating: 2, author_id: flo.id)
-cafe.reviews.create!(body: river_cafe, rating: 4, author_id: nemo.id)
+cafe.reviews.create!(body: river_cafe, rating: 4, author_id: dory.id)
 lake.reviews.create!(body: lake_body, rating: 5, author_id: flo.id)
 intro.reviews.create!(body: intro_body, rating: 5, author_id: nemo.id)
+lake.reviews.create!(body: lake_shark, rating: 1, author_id: bruce.id)
+pier.reviews.create!(body: pier_shark, rating: 2, author_id: bruce.id)
+ferry.reviews.create!(body: ferry_shark, rating: 1, author_id: bruce.id)
+cafe.reviews.create!(body: river_shark, rating: 1, author_id: bruce.id)
+sushi.reviews.create!(body: sushi_flo, rating: 1, author_id: marlin.id)
+sushi.reviews.create!(body: sushi_dory, rating: 5, author_id: dory.id)
+sushi.reviews.create!(body: sushi_shark, rating: 5, author_id: bruce.id)
 
 SchoolMembership.create!(school_owner_id: nemo.id, school_member_id: flo.id)
-SchoolMembership.create!(school_owner_id: nemo.id, school_member_id: dori.id)
+SchoolMembership.create!(school_owner_id: nemo.id, school_member_id: dory.id)
 SchoolMembership.create!(school_owner_id: flo.id, school_member_id: nemo.id)
-SchoolMembership.create!(school_owner_id: dori.id, school_member_id: flo.id)
+SchoolMembership.create!(school_owner_id: dory.id, school_member_id: flo.id)
 
 
 # business_ids = [];

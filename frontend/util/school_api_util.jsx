@@ -21,6 +21,24 @@ var SchoolApiUtil = {
       }
     });
   },
+  destroySchoolMembership: function (schoolMemberId, success) {
+    $.ajax({
+      url: "/api/school_memberships",
+      method: "DELETE",
+      dataType: 'json',
+      data: {school_member_id: schoolMemberId},
+      success: function (schoolMembership) {
+        UsersApiUtil.fetchCurrentUserById(schoolMembership.school_owner_id);
+        UsersApiUtil.fetchUserById(schoolMembership.school_member_id);
+        if (success) {
+          success();
+        }
+      },
+      error: function (data) {
+        console.log('oh noooo! from createSchoolMembership');
+      }
+    });
+  },
 
   fetchSchoolMembersByOwnerId: function (schoolOwnerId, success) {
     $.ajax({

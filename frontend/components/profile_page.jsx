@@ -92,7 +92,7 @@ var ProfilePage = React.createClass({
       user = OtherUserStore.getOtherUser();
       if (!CurrentUserSchoolStore.hasMember(user.id)) {
         addSchoolMemberButton = <button onClick={this.addSchoolMember} className="my-button">Add {user.username} to your school</button>;
-      }
+      } 
     }
 
     var imageUrl = user.image_url;
