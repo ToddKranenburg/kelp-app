@@ -34,4 +34,5 @@ For more information on the app, check out the [docs][documents].
 - [ ] heroku keys:add  (only on a/A computers)
 - [ ] git remote add heroku https://git.heroku.com/kelp-app.git
 - [ ] git push heroku master
+- [ ] figaro heroku:set -e production
 - [ ] heroku run bundle exec rake db:reset (resets full database! Don't do this if you want to save anything.)

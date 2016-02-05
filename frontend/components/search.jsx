@@ -32,16 +32,17 @@ var Search = React.createClass({
 
   clickResult: function (item) {
     var url;
+
     if (item._type === "Business") {
       url = "businesses/" + item.id;
-    } else if (item._type === "User") {
+    } else {
       url = "users/" + item.id;
     }
 
     return (function () {
       this.clicked = true;
       this.history.pushState({}, url);
-      this.forceUpdate();
+      this.setState({query: ""});
     }.bind(this));
   },
 
@@ -91,7 +92,7 @@ var Search = React.createClass({
       }
 
       searchResultItems.push(
-        <li className="search-bar-results-item group" key={i}>
+        <li className="search-bar-results-item group" key={i} onClick={this.clickResult(item)}>
           <img className="search-image" src={imageUrl}/>
           <div className="search-content">
             <div className="search-words">
