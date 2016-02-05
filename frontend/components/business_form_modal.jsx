@@ -10,7 +10,7 @@ var BusinessFormModal = React.createClass({
     return ({imageFile: null, imageUrl: ""});
   },
 
-  changeFile: function (files) {
+  dragAndDrop: function (files) {
     var reader = new FileReader();
     var file = files[0];
 
@@ -26,7 +26,7 @@ var BusinessFormModal = React.createClass({
   },
 
   resetForm: function () {
-    this.setState({imageFile: null, imageUrl: "", uploading: false});
+    this.setState({imageFile: null, imageUrl: ""});
   },
 
   submitForm: function (e) {
