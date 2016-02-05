@@ -21,7 +21,7 @@ var UsersApiUtil = {
     });
   },
 
-  fetchUserById: function (userId) {
+  fetchUserById: function (userId, success) {
     $.ajax({
       url: "/api/users/" + userId,
       method: "GET",
@@ -29,12 +29,34 @@ var UsersApiUtil = {
       data: {user_id: userId},
       success: function (user) {
         UserActions.receiveSingleUser(user);
+        if (success) {
+          success(user.id);
+        }
       },
       error: function (data) {
         console.log('oh noooo! from fetchUserById');
       }
     });
+  },
+
+  fetchCurrentUserById: function (currentUserId, success) {
+    $.ajax({
+      url: "/api/users/" + currentUserId,
+      method: "GET",
+      dataType: "json",
+      data: {user_id: currentUserId},
+      success: function (user) {
+        UserActions.receiveCurrentUser(user);
+        if (success) {
+          success();
+        }
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchCurrentUserById');
+      }
+    });
   }
+
 };
 
 module.exports = UsersApiUtil;

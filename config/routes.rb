@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     get "search", to: "utils#search"
     resources :users, only: [:create, :index, :update]
+    resources :school_memberships, only: [:create, :destroy]
     resource :session, only: [:create, :destroy, :show]
     resources :reviews, only: [:create, :destroy, :index, :show]
     resources :businesses, only: [:create, :destroy, :index, :show] do

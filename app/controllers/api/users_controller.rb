@@ -1,4 +1,9 @@
 class Api::UsersController < ApplicationController
+  #showing the school!
+  def index
+    user = User.find(params[:owner_id])
+    @users = user.school_members
+  end
   def show
     @user = User.find(params[:id])
   end

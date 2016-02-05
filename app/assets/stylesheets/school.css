@@ -1,0 +1,38 @@
+.school {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.school-header {
+  padding: 5px 0px 10px 5px;
+}
+
+.school-member {
+  float: left;
+  padding: 4px;
+  position: relative;
+}
+
+.school-member-thumb {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+}
+.school-member-thumb:hover {
+  cursor: pointer;
+}
+
+.school-member-name {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 70px;
+  max-width: 200px;
+  text-align: center;
+  font-size: 12px;
+  background: black;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+}

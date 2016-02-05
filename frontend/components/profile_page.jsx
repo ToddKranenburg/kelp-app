@@ -1,10 +1,13 @@
 var React = require('react'),
   UsersApiUtil = require('../util/users_api_util'),
   ApiUtil = require('../util/api_util'),
+  SchoolApiUtil = require('../util/school_api_util'),
   ImageModal = require('./image_form_modal'),
   ReactRouter = require('react-router'),
   Link = ReactRouter.Link,
   OtherUserStore = require('../stores/other_user_store'),
+  SchoolStore = require('../stores/school_store'),
+  School = require('./school'),
   CurrentUserStore = require('../stores/current_user_store');
 
 var ProfilePage = React.createClass({
@@ -19,6 +22,8 @@ var ProfilePage = React.createClass({
       this.otherUserStoreListener = OtherUserStore.addListener(this.forceUpdate.bind(this));
       UsersApiUtil.fetchUserById(this.props.userId);
     }
+    this.schoolStoreListener = SchoolStore.addListener(this.forceUpdate.bind(this));
+    SchoolApiUtil.fetchSchoolMembersByOwnerId(this.props.userId);
   },
 
   componentWillUnmount: function () {
@@ -26,6 +31,14 @@ var ProfilePage = React.createClass({
       this.currentUserStoreListener.remove();
     } else {
       this.otherUserStoreListener.remove();
+    }
+    this.schoolStoreListener.remove();
+  },
+
+  componentWillReceiveProps: function (newProps) {
+    SchoolApiUtil.fetchSchoolMembersByOwnerId(newProps.userId);
+    if (!this.props.isCurrentUser) {
+      UsersApiUtil.fetchUserById(this.props.userId);
     }
   },
 
@@ -49,8 +62,13 @@ var ProfilePage = React.createClass({
     this.setState({modalIsOpen: false});
   },
 
+  addSchoolMember: function () {
+    var schoolMemberId = OtherUserStore.getOtherUser().id;
+    SchoolApiUtil.createSchoolMembership(schoolMemberId);
+  },
+
   render: function() {
-    var user, cog, modal, addNewBusinessButton;
+    var user, cog, modal, addNewBusinessButton, addSchoolMemberButton;
     if (this.props.isCurrentUser) {
       user = CurrentUserStore.getCurrentUser();
       cog =   <i className="fa fa-cog" onClick={this.toggleModal}></i>;
@@ -62,8 +80,9 @@ var ProfilePage = React.createClass({
       addNewBusinessButton = <Link className="my-button" to='/business-form'>Add a New Business to Kelp</Link>;
     } else {
       user = OtherUserStore.getOtherUser();
+      addSchoolMemberButton = <button onClick={this.addSchoolMember} className="my-button">Add {user.username} to your school</button>;
     }
-    // var currentUser =
+
     var imageUrl = user.image_url;
     return (
       <div className="profile-info group">
@@ -71,6 +90,8 @@ var ProfilePage = React.createClass({
         <h2 className="profile-username">{user.username}</h2>
         {cog}
         {modal}
+        {addSchoolMemberButton}
+        <School schoolMembers={SchoolStore.getSchoolMembers()} username={user.username}/>
         {addNewBusinessButton}
       </div>
     );
