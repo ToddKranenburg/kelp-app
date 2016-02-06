@@ -1,3 +1,6 @@
 json.array! @school_members do |school_member|
-  json.partial! 'api/reviews/review', review: school_member.review
+  reviews = school_member.reviews
+  json.array! reviews do |review|
+    json.partial! 'api/reviews/review', review: school_member.review
+  end
 end

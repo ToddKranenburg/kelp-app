@@ -54,6 +54,7 @@ var ApiUtil = {
       dataType: "json",
       data: {owner_id: ownerId},
       success: function (reviews) {
+        console.log(reviews)
         ReviewActions.receiveAllReviews(reviews);
       },
       error: function (data) {
