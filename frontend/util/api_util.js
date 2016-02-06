@@ -60,6 +60,7 @@ var ApiUtil = {
             allReviews.push(review);
           });
         });
+        debugger
         ReviewActions.receiveAllReviews(allReviews);
       },
       error: function (data) {
