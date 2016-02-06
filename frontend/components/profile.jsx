@@ -59,13 +59,22 @@ var Profile = React.createClass({
         return function () {
           this.myReviewsKlass = "tab";
           this.allReviewsKlass = "tab unselected";
+          this.schoolReviewsKlass = "tab unselected";
           ApiUtil.fetchReviewsByUserId(this.props.userId);
         };
       case TabConstants.ALL_REVIEWS:
         return function () {
           this.allReviewsKlass = "tab";
           this.myReviewsKlass = "tab unselected";
+          this.schoolReviewsKlass = "tab unselected";
           ApiUtil.fetchAllReviews();
+        };
+      case TabConstants.SCHOOL_REVIEWS:
+        return function () {
+          this.allReviewsKlass = "tab unselected";
+          this.myReviewsKlass = "tab unselected";
+          this.schoolReviewsKlass = "tab";
+          ApiUtil.fetchSchoolReviewsByOwnerId(CurrentUserStore.getCurrentUser().id);
         };
     }
   },

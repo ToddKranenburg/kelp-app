@@ -47,6 +47,21 @@ var ApiUtil = {
     });
   },
 
+  fetchSchoolReviewsByOwnerId: function (ownerId) {
+    $.ajax({
+      url: "/api/reviews",
+      method: "GET",
+      dataType: "json",
+      data: {owner_id: ownerId},
+      success: function (reviews) {
+        ReviewActions.receiveAllReviews(reviews);
+      },
+      error: function (data) {
+        console.log('oh noooo! from fetchSchoolReviewsByOwnerId');
+      }
+    });
+  },
+
   fetchReviewById: function (reviewId) {
     $.ajax({
       url: "/api/reviews/" + reviewId,
@@ -73,7 +88,9 @@ var ApiUtil = {
         console.log('oh noooo! from fetchBusinessById');
       }
     });
-  }
+  },
+
+
 
 
 };

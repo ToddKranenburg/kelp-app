@@ -5,6 +5,7 @@ var Tab = React.createClass({
   render: function() {
     var myReviewsKlass = this.myReviewsKlass || "tab";
     var allReviewsKlass = this.allReviewsKlass || "tab unselected";
+    var schoolReviewsKlass = this.schoolReviewsKlass || "tab unselected";
     var tabs;
     if (this.props.isCurrentUser) {
       tabs =
@@ -14,6 +15,9 @@ var Tab = React.createClass({
           </div>
           <div className={allReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.ALL_REVIEWS).bind(this)}>
             All Reviews
+          </div>
+          <div className={schoolReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.SCHOOL_REVIEWS).bind(this)}>
+            School Reviews
           </div>
         </div>;
     } else {
