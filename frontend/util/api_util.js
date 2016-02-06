@@ -39,13 +39,7 @@ var ApiUtil = {
       dataType: "json",
       data: {user_id: userId},
       success: function (reviews) {
-        var allReviews = [];
-        reviews.forEach(function (userReviews) {
-          userReviews.forEach(function (review) {
-            allReviews.push(review);
-          });
-        });
-        ReviewActions.receiveAllReviews(allReviews);
+        ReviewActions.receiveAllReviews(reviews);
       },
       error: function (data) {
         console.log('oh noooo! from fetchReviewsByUserId');
@@ -60,7 +54,13 @@ var ApiUtil = {
       dataType: "json",
       data: {owner_id: ownerId},
       success: function (reviews) {
-        ReviewActions.receiveAllReviews(reviews);
+        var allReviews = [];
+        reviews.forEach(function (userReviews) {
+          userReviews.forEach(function (review) {
+            allReviews.push(review);
+          });
+        });
+        ReviewActions.receiveAllReviews(allReviews);
       },
       error: function (data) {
         console.log('oh noooo! from fetchSchoolReviewsByOwnerId');
