@@ -74,7 +74,7 @@ var Profile = React.createClass({
           this.allReviewsKlass = "tab unselected";
           this.myReviewsKlass = "tab unselected";
           this.schoolReviewsKlass = "tab";
-          ApiUtil.fetchSchoolReviewsByOwnerId(CurrentUserStore.getCurrentUser().id);
+          ApiUtil.fetchSchoolReviewsByOwnerId(this.userId);
         };
     }
   },
