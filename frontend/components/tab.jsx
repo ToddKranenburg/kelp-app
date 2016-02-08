@@ -16,9 +16,6 @@ var Tab = React.createClass({
           <div className={allReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.ALL_REVIEWS).bind(this)}>
             All Reviews
           </div>
-          <div className={schoolReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.SCHOOL_REVIEWS).bind(this)}>
-            School Reviews
-          </div>
         </div>;
     } else {
       tabs =
