@@ -239,9 +239,16 @@ a:hover {
   border-top-left-radius: 5px;
 }
 
-.empty-tab {
+.empty-current-user-tab {
   height: 40px;
-  width: 387px;
+  width: 255px;
+  display: block;
+  float: right;
+  border-bottom: 1px solid #ccc;
+}
+.empty-other-user-tab {
+  height: 40px;
+  width: 515px;
   display: block;
   float: right;
   border-bottom: 1px solid #ccc;

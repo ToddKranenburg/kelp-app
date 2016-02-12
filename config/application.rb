@@ -25,7 +25,8 @@ module Kelp
         :bucket => ENV["s3_bucket"],
         :access_key_id => ENV["s3_access_key_id"],
         :secret_access_key => ENV["s3_secret_access_key"]
-      }
+      },
+      :s3_protocol => 'https'
     }
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

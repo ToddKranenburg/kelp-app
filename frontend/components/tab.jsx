@@ -6,7 +6,7 @@ var Tab = React.createClass({
     var myReviewsKlass = this.myReviewsKlass || "tab";
     var allReviewsKlass = this.allReviewsKlass || "tab unselected";
     var schoolReviewsKlass = this.schoolReviewsKlass || "tab unselected";
-    var tabs;
+    var tabs, emptyKlass;
     if (this.props.isCurrentUser) {
       tabs =
         <div className="full-tabs">
@@ -16,8 +16,13 @@ var Tab = React.createClass({
           <div className={allReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.ALL_REVIEWS).bind(this)}>
             All Reviews
           </div>
+          <div className={schoolReviewsKlass} onClick={this.props.tabClickHandler(TabConstants.SCHOOL_REVIEWS).bind(this)}>
+            School Reviews
+          </div>
         </div>;
+      emptyKlass = "empty-current-user-tab"
     } else {
+      emptyKlass = "empty-other-user-tab"
       tabs =
         <div className="full-tabs">
           <div className={myReviewsKlass}>
@@ -28,7 +33,7 @@ var Tab = React.createClass({
     return (
       <div className="tab-bar group">
         {tabs}
-        <div className="empty-tab">
+        <div className={emptyKlass}>
         </div>
       </div>
     );

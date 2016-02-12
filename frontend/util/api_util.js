@@ -55,7 +55,6 @@ var ApiUtil = {
       data: {owner_id: ownerId},
       success: function (reviews) {
         var allReviews = [];
-        debugger
         reviews.forEach(function (userReviews) {
           userReviews.forEach(function (review) {
             allReviews.push(review);

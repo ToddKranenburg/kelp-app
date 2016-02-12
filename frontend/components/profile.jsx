@@ -70,11 +70,12 @@ var Profile = React.createClass({
           ApiUtil.fetchAllReviews();
         };
       case TabConstants.SCHOOL_REVIEWS:
+        var that = this;
         return function () {
           this.allReviewsKlass = "tab unselected";
           this.myReviewsKlass = "tab unselected";
           this.schoolReviewsKlass = "tab";
-          ApiUtil.fetchSchoolReviewsByOwnerId(this.userId);
+          ApiUtil.fetchSchoolReviewsByOwnerId(that.userId);
         };
     }
   },
