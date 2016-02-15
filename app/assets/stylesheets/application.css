@@ -294,6 +294,25 @@ a:hover {
   border-bottom: 1px solid #ccc;
 }
 
+/*.reviews-index-item:hover .review-date {
+  display: block;
+  position: absolute;
+  right: 20px;
+  font-size: 12px;
+
+}
+
+.review-date {
+  display: none;
+}*/
+
+.review-date {
+  display: block;
+  position: absolute;
+  right: 20px;
+  font-size: 12px;
+}
+
 .review-index-link {
   text-decoration: none;
   color: #68829E;
@@ -317,13 +336,6 @@ a:hover {
 .review-author {
   display: block;
   float: left;
-}
-
-.review-date {
-  display: block;
-  position: absolute;
-  right: 20px;
-  font-size: 12px;
 }
 
 .review-stars {
@@ -351,4 +363,10 @@ a:hover {
   -o-filter: blur(3px);
   -ms-filter: blur(3px);
   filter: blur(3px);
+}
+
+.add-business-button .my-button {
+  margin-top: 50px;
+  width: 200px;
+  text-align: center;
 }

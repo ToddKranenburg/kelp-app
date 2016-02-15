@@ -18,15 +18,18 @@ var ReviewFormModal = React.createClass({
 
 
     return (
-      <Modal
-        isOpen={this.props.modalIsOpen}
-        onRequestClose={this.props.closeModal}
-        style={customStyles}>
-        <ReviewForm
-          submitForm={this.props.submitForm}
-          business={this.props.business}
-        />
-      </Modal>
+        <Modal
+          isOpen={this.props.modalIsOpen}
+          onRequestClose={this.props.closeModal}
+          style={customStyles}>
+          <div className="review-form-wrapper">
+          <i className="fa fa-times" onClick={this.props.closeModal}></i>
+          <ReviewForm
+            submitForm={this.props.submitForm}
+            business={this.props.business}
+          />
+          </div>
+        </Modal>
     );
   }
 });

@@ -13,7 +13,7 @@ var ApiUtil = {
         ReviewActions.receiveSingleReview(review);
       },
       error: function (data) {
-        console.log('oh noooo! from fetchReviewById');
+        console.log('oh noooo! from createReview');
       }
     });
   },

@@ -10,7 +10,7 @@ var ReviewForm = React.createClass({
   getInitialState: function () {
       return ({
         body: "",
-        rating: 0,
+        rating: null,
         hoverRating: null,
         selectedBusinessId: null,
         formBodyKlass: "review-form-body"

@@ -1,4 +1,6 @@
 var React = require('react'),
+  ReactRouter = require('react-router'),
+  Link = ReactRouter.Link,
   BusinessIndexItem = require('./business_index_item');
 
 
@@ -24,7 +26,10 @@ var BusinessesIndex = React.createClass({
     }.bind(this));
 
     if (businesses.length < 1) {
-      businesses = <div>No businesses match your search.</div>;
+      businesses = <div className="add-business-button">
+      No businesses match your search.
+      <Link className="my-button" to='/business-form'>Add a New Business to Kelp</Link>
+      </div>;
     }
 
     return (

@@ -121,7 +121,7 @@ var Business = React.createClass({
             <img
               className="business-thumb-image default-image"
               src={window.defaultBusinessPhoto}
-              onClick={this.toggleModal}
+              onClick={this.toggleImageModal}
             />
         </li>
       );

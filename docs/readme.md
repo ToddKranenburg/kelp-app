@@ -13,6 +13,27 @@ the Ruby on Rails and React.js development frameworks and allows users to:
 - [ ] Comment on and like another's reviews
 - [ ] Search for reviews and users
 
+
+## Things to run once cloned to get the server running:
+
+- [ ] bundle install
+- [ ] npm install (npm must be installed)
+- [ ] webpack --watch (webpack also must be installed)
+- [ ] bundle exec figaro install (and add keys)
+- [ ] bundle exec rake db:reset (postgres must be installed)
+- [ ] rails s
+
+## Things to push to heroku:
+
+- [ ] heroku login
+- [ ] rm ~/.ssh/id_*  (only on a/A computers)
+- [ ] heroku keys:add  (only on a/A computers)
+- [ ] git remote add heroku https://git.heroku.com/kelp-app.git
+- [ ] git push heroku master
+- [ ] figaro heroku:set -e production
+- [ ] heroku run bundle exec rake db:reset (resets full database! Don't do this if you want to save anything.)
+
+
 ## Design Docs
 * [View Wireframes][view]
 * [DB schema][schema]

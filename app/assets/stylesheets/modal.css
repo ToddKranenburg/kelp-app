@@ -61,11 +61,23 @@
 
 .image-upload-form .fa-times {
   position: absolute;
-  top: -50px;
-  right: -7px;
+  top: -30px;
+  right: 13px;
   font-size: 20px;
 }
 
 .image-upload-form .fa-times:hover {
+  cursor: pointer;
+}
+
+.review-form-wrapper .fa-times {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  right: 13px;
+  font-size: 20px;
+}
+
+.review-form-wrapper .fa-times:hover {
   cursor: pointer;
 }
