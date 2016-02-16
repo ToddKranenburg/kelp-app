@@ -38,7 +38,7 @@ var SessionForm = React.createClass({
             <div className="overlay"></div>
           </a>
             <div className="user-link">
-              <Link to={'/sign-up'}>Don't have an account? Sign up here.</Link>
+              <Link to={'/sign-up'}>No account? Sign up here.</Link>
             </div>
           </form>
           <div className="sign-up-content">

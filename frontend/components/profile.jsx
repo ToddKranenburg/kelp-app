@@ -5,6 +5,7 @@ var React = require('react'),
   ApiUtil = require('../util/api_util'),
   SchoolApiUtil = require('../util/school_api_util'),
   TabConstants = require('../constants/tab_constants'),
+  Shepherd = require('tether-shepherd'),
   Tab = require('../components/tab'),
   ProfilePage = require('../components/profile_page'),
   ReviewsIndex = require('./reviews/reviews_index.jsx');
@@ -20,7 +21,71 @@ var Profile = React.createClass({
     this.reviewStoreListener =
       ReviewStore.addListener(this.reviewsChanged);
     SchoolApiUtil.fetchCurrentUserSchoolMembersById(CurrentUserStore.getCurrentUser().id);
+    if (!window.toured) {
+      var defaults = {classes: 'shepherd-theme-arrows', scrollTo: false};
+      tour = new Shepherd.Tour(
+        {defaults: defaults}
+      )
 
+      tour.addStep('step-1',
+        {title: 'Welcome to Kelp!',
+        text: 'Kelp allows users to review their favorite aquatic businesses and much more.',
+        attachTo: '.header-logo bottom-right',
+        buttons: [{
+          text: 'Next',
+          action: tour.next
+        }]}
+      );
+      tour.addStep('step-2',
+        {title: 'Profile',
+        text: 'This is your personal profile page. You can update your profile picture or check out the profiles of users in your "school", or personal network.',
+        attachTo: '.profile-picture left',
+        buttons: [{
+          text: 'Next',
+          action: tour.next
+        }]}
+      );
+      tour.addStep('step-3',
+        {title: 'Reviews',
+        text: 'You can check out your reviews, recent reviews from across Kelp, or reviews by members of your "school".',
+        attachTo: '.tab bottom',
+        buttons: [{
+          text: 'Next',
+          action: tour.next
+        }]}
+      );
+      tour.addStep('step-4',
+        {title: 'Search',
+        text: 'To find a business or a user on Kelp, use the search bar.',
+        attachTo: '.search-bar-input bottom',
+        buttons: [{
+          text: 'Next',
+          action: tour.next
+        }]}
+      );
+      tour.addStep('step-5',
+        {title: 'Add a Business',
+        text: 'If there\'s a business you know of that is missing from the site, you can add it here.',
+        attachTo: '.profile-info > .my-button bottom',
+        buttons: [{
+          text: 'Next',
+          action: tour.next
+        }]}
+      );
+
+      tour.addStep('step-6',
+        {title: 'Enjoy',
+        text: 'Now go on and get reviewing!',
+        attachTo: '.profile-info > .my-button bottom-left',
+        buttons: [{
+          text: 'Exit',
+          action: tour.hide
+        }]}
+      );
+
+      tour.start()
+      window.toured = true;
+    }
   },
 
   getUser: function () {
