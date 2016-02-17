@@ -13,7 +13,7 @@ Welcome to Kelp, Yelp for fish! Users of Kelp can:
 To use Kelp you must have an account. If you just want to peruse the app without making an account, there is a "Demo" button on the sign-up page that lets you login as a demo-user.
 
 Take a swim around the site [here][heroku].
-[heroku]: https://kelp-app.herokuapp.com/
+[heroku]: http://kelp-app.herokuapp.com/
 
 ## Technology
 
