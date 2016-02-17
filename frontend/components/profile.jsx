@@ -33,7 +33,10 @@ var Profile = React.createClass({
         attachTo: '.header-logo bottom-right',
         buttons: [{
           text: 'Next',
-          action: tour.next
+          action: function () {
+            $('.profile-picture').addClass('zoom');
+            tour.next();
+          }
         }]}
       );
       tour.addStep('step-2',
@@ -42,7 +45,11 @@ var Profile = React.createClass({
         attachTo: '.profile-picture left',
         buttons: [{
           text: 'Next',
-          action: tour.next
+          action: function () {
+            $('.profile-picture').removeClass('zoom');
+            $('.tab').addClass('zoom');
+            tour.next();
+          }
         }]}
       );
       tour.addStep('step-3',
@@ -51,7 +58,11 @@ var Profile = React.createClass({
         attachTo: '.tab bottom',
         buttons: [{
           text: 'Next',
-          action: tour.next
+          action: function() {
+            $('.tab').removeClass('zoom');
+            $('.search-bar-input').addClass('zoom');
+            tour.next();
+          }
         }]}
       );
       tour.addStep('step-4',
@@ -60,7 +71,11 @@ var Profile = React.createClass({
         attachTo: '.search-bar-input bottom',
         buttons: [{
           text: 'Next',
-          action: tour.next
+          action: function () {
+            $('.profile-info > .my-button').addClass('zoom');
+            $('.search-bar-input').removeClass('zoom');
+            tour.next();
+          }
         }]}
       );
       tour.addStep('step-5',
@@ -69,7 +84,10 @@ var Profile = React.createClass({
         attachTo: '.profile-info > .my-button bottom',
         buttons: [{
           text: 'Next',
-          action: tour.next
+          action: function () {
+            $('.profile-info > .my-button').removeClass('zoom');
+            tour.next();
+          }
         }]}
       );
 
@@ -79,11 +97,16 @@ var Profile = React.createClass({
         attachTo: '.profile-info > .my-button bottom-left',
         buttons: [{
           text: 'Exit',
-          action: tour.hide
+          action: function () {
+            $('.gray-div').remove();
+            tour.hide()
+          }
         }]}
       );
 
       tour.start()
+      var gray = $('<div></div>').addClass("gray-div");
+      $('#root').append(gray);
       window.toured = true;
     }
   },
