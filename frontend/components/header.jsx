@@ -15,13 +15,6 @@ var Header = React.createClass({
     }.bind(this));
   },
 
-  submitHiddenForm: function (e) {
-    e.preventDefault();
-    var credentials = $(e.currentTarget).serializeJSON();
-    SessionsApiUtil.login(credentials, function () {
-      this.history.pushState({}, "/");
-    }.bind(this));
-  },
 
   render: function() {
     var headerContent;
@@ -39,16 +32,9 @@ var Header = React.createClass({
     } else {
       headerContent = (
         <div>
-          <div className="demo-form">
-            <form onSubmit={this.submitHiddenForm}>
-              <input type="hidden" name="username" value="Nemo"/>
-              <input type="hidden" name="password" value="Password"/>
-              <button className="demo-button my-button">Demo</button>
-            </form>
-          </div>
           <div className="header-buttons">
             <Link className="my-button" to={'/sign-up'}>Sign up</Link>
-            <Link className="my-button" to={'/login'}>Sign in</Link>
+            <Link className="my-button" to={'/login'}>Log in</Link>
           </div>
         </div>
       );

@@ -47,11 +47,13 @@ html {
 
 .facebook-button {
   position: relative;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  width: 175px;
 }
 
-.facebook-button {
-  padding-top: 10px;
-  width: 175px;
+.top-button {
+  margin-top: 10px;
 }
 
 .overlay {
@@ -59,7 +61,7 @@ html {
   height: 38px;
   background: transparent;
   position: absolute;
-  top: 248px;
+  top: 238px;
   left: 137px;
 }
 
@@ -176,7 +178,8 @@ a:hover {
   box-sizing: border-box;
 }
 
-.sign-up-form > h1 {
+
+.sign-up-form h1 {
   display: block;
   font-size: 24px;
   margin-bottom: 20px;
@@ -185,7 +188,7 @@ a:hover {
   font-weight: bold;
 }
 
-.sign-up-form > input {
+.sign-up-form input {
   display: block;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -193,8 +196,7 @@ a:hover {
   margin: 10px auto;
 }
 
-.sign-up-form > button {
-  margin-top: 20px;
+.sign-up-form button {
   width: 178px;
   height: 30px;
   border: 1px solid #ccc;
