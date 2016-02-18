@@ -15,14 +15,15 @@ To use Kelp you must have an account. If you just want to peruse the app without
 Take a swim around the site [here][heroku].
 [heroku]: http://kelp-app.com/
 
-Heres a taste of how it looks:  
-
-![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-1.png)  
-![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-2.png)
-
 ## Technology
 
 Kelp is a business review app like Yelp with a React, JavaScript frontend and a RESTful, Ruby on Rails backend. The app follows the Flux architecture and renders itself with React's DOM and React Router, creating a single-page view. It also employs the Google Places and Google Maps APIs to power location-based searching and mapping of businesses.
 
 For more information on the app, check out the [docs][documents].
 [documents]: ./docs/readme.md
+
+
+## How it Looks  
+
+![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-1.png)  
+![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-2.png)
