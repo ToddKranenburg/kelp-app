@@ -15,7 +15,8 @@ To use Kelp you must have an account. If you just want to peruse the app without
 Take a swim around the site [here][heroku].
 [heroku]: http://kelp-app.com/
 
-Heres a taste of how it looks:
+Heres a taste of how it looks:  
+
 ![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-1.png)
 ![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-2.png)
 
