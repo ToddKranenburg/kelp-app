@@ -21,7 +21,11 @@ var Profile = React.createClass({
     this.reviewStoreListener =
       ReviewStore.addListener(this.reviewsChanged);
     SchoolApiUtil.fetchCurrentUserSchoolMembersById(CurrentUserStore.getCurrentUser().id);
-    if (!window.toured) {
+    var didTour = document.cookie.replace(/(?:(?:^|.*;\s*)kelpDidTour\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if (!didTour) {
+      var expiration = new Date(Date.now() + 1000*60*60*24*7*4*12)
+      document.cookie = "kelpDidTour=true" + ";expires=" + expiration.toUTCString();
+
       var defaults = {classes: 'shepherd-theme-arrows', scrollTo: false};
       tour = new Shepherd.Tour(
         {defaults: defaults}
@@ -107,7 +111,6 @@ var Profile = React.createClass({
       tour.start()
       var gray = $('<div></div>').addClass("gray-div");
       $('#root').append(gray);
-      window.toured = true;
     }
   },
 
