@@ -17,7 +17,7 @@ Take a swim around the site [here][heroku].
 
 Heres a taste of how it looks:  
 
-![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-1.png)
+![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-1.png)  
 ![alttag](https://raw.githubusercontent.com/ToddKranenburg/kelp-app/master/docs/screen-shot-2.png)
 
 ## Technology
