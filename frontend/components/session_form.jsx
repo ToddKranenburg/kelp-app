@@ -57,7 +57,7 @@ var SessionForm = React.createClass({
             </div>
           </div>
           <div className="sign-up-content">
-            <img src="http://www.herbalremediesinfo.com/images/kelp.jpg"/>
+            <img src={window.kelpPhoto}/>
           </div>
         </div>
       </div>

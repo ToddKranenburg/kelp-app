@@ -214,6 +214,10 @@ a:hover {
   text-align: center;
 }
 
+.sign-up-content img {
+  padding-top: 20px;
+}
+
 /* PROFILE */
 .profile {
   box-sizing: border-box;
